@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gewinnrad Dashboard · Sportstech</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root{
+    --red:#e2001a; --red-soft:#fde7e9; --ink:#1a1a1f; --muted:#6b7280;
+    --line:#e9ebf0; --bg:#f6f7f9; --card:#fff; --green:#16a34a; --shadow:0 1px 3px rgba(16,24,40,.06),0 1px 2px rgba(16,24,40,.04);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45}
+  .wrap{max-width:1180px;margin:0 auto;padding:24px 20px 64px}
+  header{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:8px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .logo{width:34px;height:34px;border-radius:9px;background:var(--red);display:grid;place-items:center;color:#fff;font-weight:800;font-size:20px}
+  h1{font-size:22px;font-weight:700;letter-spacing:-.2px}
+  .sub{color:var(--muted);font-size:13px}
+  .controls{display:flex;align-items:center;gap:10px}
+  select{font:inherit;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;cursor:pointer}
+  .banner{margin:16px 0;padding:10px 14px;border-radius:10px;font-size:13px;font-weight:600;display:none}
+  .banner.sample{display:block;background:#fff7ed;color:#9a3412;border:1px solid #fed7aa}
+  .grid{display:grid;gap:14px}
+  .kpis{grid-template-columns:repeat(6,1fr);margin:18px 0}
+  @media(max-width:900px){.kpis{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:560px){.kpis{grid-template-columns:repeat(2,1fr)}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow)}
+  .kpi .label{font-size:12px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.4px}
+  .kpi .val{font-size:30px;font-weight:800;margin-top:6px;letter-spacing:-.5px}
+  .kpi .val.red{color:var(--red)} .kpi .val.green{color:var(--green)}
+  .kpi .hint{font-size:12px;color:var(--muted);margin-top:2px}
+  .charts{grid-template-columns:1.5fr 1fr;margin-bottom:14px}
+  @media(max-width:840px){.charts{grid-template-columns:1fr}}
+  .card h3{font-size:14px;font-weight:700;margin-bottom:12px}
+  .chart-box{position:relative;height:300px}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{text-align:right;padding:9px 10px;border-bottom:1px solid var(--line)}
+  th:first-child,td:first-child{text-align:left}
+  th{font-size:11px;text-transform:uppercase;letter-spacing:.4px;color:var(--muted);font-weight:700}
+  tbody tr:hover{background:#fafbfc}
+  tfoot td{font-weight:800;border-top:2px solid var(--ink);border-bottom:none}
+  .foot{margin-top:22px;color:var(--muted);font-size:12px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <div class="logo">S</div>
+      <div>
+        <h1>Gewinnrad&nbsp;Dashboard</h1>
+        <div class="sub">Tagesberichte aus dem Gewinnrad-Gewinnspiel · Sportstech</div>
+      </div>
+    </div>
+    <div class="controls">
+      <select id="monthSelect"></select>
+    </div>
+  </header>
+
+  <div id="banner" class="banner"></div>
+
+  <div class="grid kpis" id="kpis"></div>
+
+  <div class="grid charts">
+    <div class="card">
+      <h3>Tagesverlauf — Nutzer vs. Rezis mit Bild</h3>
+      <div class="chart-box"><canvas id="chartMain"></canvas></div>
+    </div>
+    <div class="card">
+      <h3>Conversion-Rate pro Tag</h3>
+      <div class="chart-box"><canvas id="chartConv"></canvas></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Tagesdaten</h3>
+    <div style="overflow-x:auto">
+      <table id="tbl">
+        <thead><tr>
+          <th>Datum</th><th>Gesamt Nutzer</th><th>Rezi Produkte</th><th>Ohne Rezi</th>
+          <th>Abgeschlossen</th><th>Foto hochgeladen</th><th>Conversion</th><th>Rezis (Bild)</th>
+        </tr></thead>
+        <tbody></tbody>
+        <tfoot></tfoot>
+      </table>
+    </div>
+  </div>
+
+  <div class="foot" id="foot"></div>
+</div>
+
+<script>
+// Fallback-Beispieldaten (greift nur, wenn data.json nicht geladen werden kann, z.B. lokal via file://).
+const SAMPLE = {
+  meta:{ source:"sample", updated:"" },
+  days:[] // wird unten generiert
+};
+// Platzhalter-Mai erzeugen (klar als BEISPIEL markiert)
+(function(){
+  const seed=[19,22,17,25,30,14,12,18,21,27,33,29,16,11,24,28,31,20,15,23,26,34,19,13,22,30,18,25,21,17,28];
+  for(let d=1; d<=31; d++){
+    const u=seed[d-1];
+    const rezi=Math.round(u*0.92);
+    const bild=Math.round(rezi*(0.40+((d%5)*0.03)));
+    SAMPLE.days.push({
+      date:`2025-05-${String(d).padStart(2,'0')}`,
+      gesamtNutzer:u, reziProdukte:rezi, ohneRezi:u-rezi,
+      abgeschlossen:Math.round(rezi*0.55), fotoHochgeladen:bild,
+      conversion:+( (bild/u)*100 ).toFixed(1), rezisBild:bild
+    });
+  }
+})();
+
+const fmt = n => new Intl.NumberFormat('de-DE').format(n);
+const monthName = ym => new Date(ym+'-01').toLocaleDateString('de-DE',{month:'long',year:'numeric'});
+let DATA, mainChart, convChart;
+
+async function load(){
+  try{
+    const r = await fetch('./data.json',{cache:'no-store'});
+    if(!r.ok) throw 0;
+    DATA = await r.json();
+    if(!DATA.days || !DATA.days.length) DATA = SAMPLE; // noch keine echten Daten → Vorschau
+  }catch(e){ DATA = SAMPLE; }
+  initMonths();
+}
+
+function initMonths(){
+  const months=[...new Set(DATA.days.map(d=>d.date.slice(0,7)))].sort();
+  const sel=document.getElementById('monthSelect');
+  sel.innerHTML=months.map(m=>`<option value="${m}">${monthName(m)}</option>`).join('');
+  sel.value=months[months.length-1];
+  sel.onchange=()=>render(sel.value);
+  render(sel.value);
+}
+
+function render(ym){
+  const days=DATA.days.filter(d=>d.date.startsWith(ym)).sort((a,b)=>a.date.localeCompare(b.date));
+  const sum=k=>days.reduce((s,d)=>s+(d[k]||0),0);
+  const totU=sum('gesamtNutzer'), totBild=sum('rezisBild'), totRezi=sum('reziProdukte');
+  const avgConv = totU? (totBild/totU*100):0;
+
+  // Banner
+  const b=document.getElementById('banner');
+  if((DATA.meta&&DATA.meta.source)==='sample'){
+    b.className='banner sample';
+    b.textContent='⚠ BEISPIELDATEN — Platzhalter zur Vorschau. Sobald Power Automate echte Tagesberichte schreibt, ersetzt data.json diese Werte automatisch.';
+  } else { b.className='banner'; }
+
+  // KPIs
+  document.getElementById('kpis').innerHTML = [
+    ['Gesamt Nutzer', fmt(totU), '', 'Summe '+monthName(ym)],
+    ['Rezis mit Bild', fmt(totBild), 'red', 'erzeugte Bild-Rezis'],
+    ['Ø Conversion', avgConv.toFixed(1)+'%', 'green', 'Bild-Rezis / Nutzer'],
+    ['Rezi Produkte', fmt(totRezi), '', 'Summe'],
+    ['Foto hochgeladen', fmt(sum('fotoHochgeladen')), '', 'Summe'],
+    ['Abgeschlossen', fmt(sum('abgeschlossen')), '', 'Summe'],
+  ].map(([l,v,c,h])=>`<div class="card kpi"><div class="label">${l}</div><div class="val ${c}">${v}</div><div class="hint">${h}</div></div>`).join('');
+
+  // Tabelle
+  const tb=document.querySelector('#tbl tbody');
+  tb.innerHTML=days.map(d=>`<tr>
+    <td>${new Date(d.date).toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit'})}</td>
+    <td>${fmt(d.gesamtNutzer)}</td><td>${fmt(d.reziProdukte)}</td><td>${fmt(d.ohneRezi)}</td>
+    <td>${fmt(d.abgeschlossen)}</td><td>${fmt(d.fotoHochgeladen)}</td>
+    <td>${(d.conversion??0).toFixed(1)}%</td><td><strong>${fmt(d.rezisBild)}</strong></td>
+  </tr>`).join('');
+  document.querySelector('#tbl tfoot').innerHTML=`<tr>
+    <td>Gesamt (${days.length} Tage)</td><td>${fmt(totU)}</td><td>${fmt(totRezi)}</td>
+    <td>${fmt(sum('ohneRezi'))}</td><td>${fmt(sum('abgeschlossen'))}</td>
+    <td>${fmt(sum('fotoHochgeladen'))}</td><td>${avgConv.toFixed(1)}%</td><td>${fmt(totBild)}</td></tr>`;
+
+  // Charts
+  const labels=days.map(d=>new Date(d.date).toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit'}));
+  mainChart && mainChart.destroy(); convChart && convChart.destroy();
+  const grid={color:'#eef0f4'};
+  mainChart=new Chart(document.getElementById('chartMain'),{type:'line',
+    data:{labels,datasets:[
+      {label:'Gesamt Nutzer',data:days.map(d=>d.gesamtNutzer),borderColor:'#1a1a1f',backgroundColor:'rgba(26,26,31,.06)',tension:.3,fill:true},
+      {label:'Rezis mit Bild',data:days.map(d=>d.rezisBild),borderColor:'#e2001a',backgroundColor:'rgba(226,0,26,.08)',tension:.3,fill:true}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'}},scales:{y:{beginAtZero:true,grid},x:{grid:{display:false}}}}});
+  convChart=new Chart(document.getElementById('chartConv'),{type:'bar',
+    data:{labels,datasets:[{label:'Conversion %',data:days.map(d=>d.conversion),backgroundColor:'#16a34a',borderRadius:4}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid,ticks:{callback:v=>v+'%'}},x:{grid:{display:false}}}}});
+
+  const upd=(DATA.meta&&DATA.meta.updated)?(' · zuletzt aktualisiert '+DATA.meta.updated):'';
+  document.getElementById('foot').textContent='Sportstech Gewinnrad · automatisch aus den 9:00-Tagesberichten'+upd;
+}
+load();
+</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "source": "live",
+    "updated": "",
+    "hinweis": "Diese Datei wird von Power Automate automatisch befuellt/ueberschrieben. Solange 'days' leer ist, zeigt das Dashboard Beispieldaten. Schema je Tag siehe unten."
+  },
+  "_schema_pro_tag": {
+    "date": "YYYY-MM-DD",
+    "gesamtNutzer": 0,
+    "reziProdukte": 0,
+    "ohneRezi": 0,
+    "abgeschlossen": 0,
+    "fotoHochgeladen": 0,
+    "conversion": 0.0,
+    "rezisBild": 0
+  },
+  "days": []
+}
