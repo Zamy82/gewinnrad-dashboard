@@ -3,45 +3,73 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Gewinnrad Dashboard · Sportstech</title>
+<title>Gewinnspiel KPI Dashboard · Sportstech</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="./data.js"></script>
 <style>
   :root{
-    --red:#e2001a; --red-soft:#fde7e9; --ink:#1a1a1f; --muted:#6b7280;
-    --line:#e9ebf0; --bg:#f6f7f9; --card:#fff; --green:#16a34a; --shadow:0 1px 3px rgba(16,24,40,.06),0 1px 2px rgba(16,24,40,.04);
+    --bg:#0e1117; --bg2:#11151d; --card:#161b24; --card2:#1b212c;
+    --line:#262c38; --ink:#e6e8ec; --muted:#8b92a0; --muted2:#6b7280;
+    --red:#e2001a; --green:#22c55e; --gold:#f5c518; --amber:#f59e0b; --blue:#3b82f6;
+    --shadow:0 1px 3px rgba(0,0,0,.4);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:"Segoe UI",system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45}
-  .wrap{max-width:1180px;margin:0 auto;padding:24px 20px 64px}
-  header{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:8px}
+  .wrap{max-width:1320px;margin:0 auto;padding:22px 22px 64px}
+  header{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:6px}
   .brand{display:flex;align-items:center;gap:12px}
-  .logo{width:34px;height:34px;border-radius:9px;background:var(--red);display:grid;place-items:center;color:#fff;font-weight:800;font-size:20px}
+  .logo{width:36px;height:36px;border-radius:9px;background:var(--red);display:grid;place-items:center;color:#fff;font-weight:800;font-size:21px}
   h1{font-size:22px;font-weight:700;letter-spacing:-.2px}
   .sub{color:var(--muted);font-size:13px}
-  .controls{display:flex;align-items:center;gap:10px}
-  select{font:inherit;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;cursor:pointer}
-  .banner{margin:16px 0;padding:10px 14px;border-radius:10px;font-size:13px;font-weight:600;display:none}
-  .banner.sample{display:block;background:#fff7ed;color:#9a3412;border:1px solid #fed7aa}
+  .head-right{display:flex;align-items:center;gap:14px;color:var(--muted);font-size:13px}
+  .pill{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:12px;color:var(--ink)}
+  .dot{width:9px;height:9px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 3px rgba(245,158,11,.18)}
+  .tabs{display:flex;gap:4px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin:18px 0 22px}
+  .tab{padding:10px 16px;font:inherit;font-size:14px;font-weight:600;color:var(--muted);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;margin-bottom:-1px}
+  .tab:hover{color:var(--ink)}
+  .tab.active{color:var(--ink);border-bottom-color:var(--green)}
+  .banner{margin:0 0 18px;padding:11px 14px;border-radius:10px;font-size:13px;font-weight:600;display:none}
+  .banner.show{display:block;background:rgba(245,158,11,.10);color:#fbbf24;border:1px solid rgba(245,158,11,.35)}
   .grid{display:grid;gap:14px}
-  .kpis{grid-template-columns:repeat(6,1fr);margin:18px 0}
-  @media(max-width:900px){.kpis{grid-template-columns:repeat(3,1fr)}}
-  @media(max-width:560px){.kpis{grid-template-columns:repeat(2,1fr)}}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow)}
-  .kpi .label{font-size:12px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.4px}
-  .kpi .val{font-size:30px;font-weight:800;margin-top:6px;letter-spacing:-.5px}
-  .kpi .val.red{color:var(--red)} .kpi .val.green{color:var(--green)}
-  .kpi .hint{font-size:12px;color:var(--muted);margin-top:2px}
-  .charts{grid-template-columns:1.5fr 1fr;margin-bottom:14px}
-  @media(max-width:840px){.charts{grid-template-columns:1fr}}
+  .cards{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
+  .card.wide{grid-column:span 2}
+  @media(max-width:720px){.card.wide{grid-column:span 1}}
+  .ktitle{font-size:13px;color:var(--muted);font-weight:600;margin-bottom:8px}
+  .krow{display:flex;align-items:flex-start;justify-content:space-between;gap:18px}
+  .kval{font-size:34px;font-weight:800;letter-spacing:-.5px;line-height:1}
+  .kval.green{color:var(--green)} .kval.red{color:var(--red)} .kval.amber{color:var(--amber)}
+  .khint{font-size:12px;color:var(--muted);margin-top:7px;max-width:230px}
+  .stars{flex:1;min-width:160px}
+  .srow{display:flex;align-items:center;gap:8px;font-size:12px;margin:5px 0}
+  .srow .st{flex:0 0 28px;color:var(--gold);font-weight:700}
+  .srow .strack{flex:1;height:7px;background:var(--bg2);border-radius:5px;overflow:hidden}
+  .srow .sfill{height:100%;background:var(--gold);border-radius:5px}
+  .srow .sn{flex:0 0 38px;text-align:right;font-weight:700;color:var(--ink)}
+  .srow .sp{flex:0 0 34px;text-align:right;color:var(--muted)}
+  .charts{grid-template-columns:1.55fr 1fr;margin-top:14px}
+  @media(max-width:900px){.charts{grid-template-columns:1fr}}
   .card h3{font-size:14px;font-weight:700;margin-bottom:12px}
   .chart-box{position:relative;height:300px}
-  table{width:100%;border-collapse:collapse;font-size:13px}
+  .twocol{grid-template-columns:1fr 1fr;margin-top:14px}
+  @media(max-width:820px){.twocol{grid-template-columns:1fr}}
+  .bar-row{display:flex;align-items:center;gap:10px;margin:9px 0;font-size:13px}
+  .bar-row .lbl{flex:0 0 150px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .bar-row .track{flex:1;height:9px;background:var(--bg2);border-radius:6px;overflow:hidden}
+  .bar-row .fill{height:100%;background:var(--red);border-radius:6px}
+  .bar-row .num{flex:0 0 56px;text-align:right;font-weight:700;color:var(--muted)}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px}
   th,td{text-align:right;padding:9px 10px;border-bottom:1px solid var(--line)}
   th:first-child,td:first-child{text-align:left}
   th{font-size:11px;text-transform:uppercase;letter-spacing:.4px;color:var(--muted);font-weight:700}
-  tbody tr:hover{background:#fafbfc}
-  tfoot td{font-weight:800;border-top:2px solid var(--ink);border-bottom:none}
-  .foot{margin-top:22px;color:var(--muted);font-size:12px;text-align:center}
+  tbody tr:hover{background:var(--card2)}
+  tfoot td{font-weight:800;border-top:2px solid var(--muted2);border-bottom:none;color:var(--ink)}
+  .sectitle{font-size:13px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin:26px 2px 2px}
+  .sec{display:flex;align-items:center;gap:11px;margin:28px 2px 14px;font-size:19px;font-weight:700;letter-spacing:-.2px}
+  .sec .no{color:var(--green);font-size:13px;font-weight:800;font-family:ui-monospace,"Cascadia Mono",monospace}
+  .kpi-acc{position:relative;overflow:hidden}
+  .kpi-acc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--acc,transparent),transparent)}
+  .foot{margin-top:26px;color:var(--muted2);font-size:12px;text-align:center;line-height:1.7}
 </style>
 </head>
 <body>
@@ -50,145 +78,186 @@
     <div class="brand">
       <div class="logo">S</div>
       <div>
-        <h1>Gewinnrad&nbsp;Dashboard</h1>
-        <div class="sub">Tagesberichte aus dem Gewinnrad-Gewinnspiel · Sportstech</div>
+        <h1>Gewinnspiel&nbsp;KPI&nbsp;Dashboard</h1>
+        <div class="sub">Sportstech · Gewinnrad-Gewinnspiel (All-in-One Flyer)</div>
       </div>
     </div>
-    <div class="controls">
-      <select id="monthSelect"></select>
+    <div class="head-right">
+      <span id="stand">Stand —</span>
+      <span class="pill"><span class="dot"></span><span>Eigene Auswertung</span></span>
     </div>
   </header>
 
+  <nav class="tabs" id="tabs"></nav>
   <div id="banner" class="banner"></div>
-
-  <div class="grid kpis" id="kpis"></div>
-
-  <div class="grid charts">
-    <div class="card">
-      <h3>Tagesverlauf — Nutzer vs. Rezis mit Bild</h3>
-      <div class="chart-box"><canvas id="chartMain"></canvas></div>
-    </div>
-    <div class="card">
-      <h3>Conversion-Rate pro Tag</h3>
-      <div class="chart-box"><canvas id="chartConv"></canvas></div>
-    </div>
-  </div>
-
-  <div class="card">
-    <h3>Tagesdaten</h3>
-    <div style="overflow-x:auto">
-      <table id="tbl">
-        <thead><tr>
-          <th>Datum</th><th>Gesamt Nutzer</th><th>Rezi Produkte</th><th>Ohne Rezi</th>
-          <th>Abgeschlossen</th><th>Foto hochgeladen</th><th>Conversion</th><th>Rezis (Bild)</th>
-        </tr></thead>
-        <tbody></tbody>
-        <tfoot></tfoot>
-      </table>
-    </div>
-  </div>
-
+  <div id="view"></div>
   <div class="foot" id="foot"></div>
 </div>
 
 <script>
-// Fallback-Beispieldaten (greift nur, wenn data.json nicht geladen werden kann, z.B. lokal via file://).
+/* ---------- Fallback (nur wenn data.json nicht ladbar, z.B. lokal via file://) ---------- */
 const SAMPLE = {
-  meta:{ source:"sample", updated:"" },
-  days:[] // wird unten generiert
+  meta:{source:'sample',updated:''},
+  campaign:{teilnehmer:906,zuEnde:267,completed:314,conversionPct:29.5,fotosHochgeladen:164,fotosValidiert:140,
+    bewertungen:807,avgSterne:4.57,sterne:{'5':523,'4':232,'3':44,'2':3,'1':5},
+    plattform:{'Sportstech.de':464,'Amazon':226,'Otto':48},
+    land:{'Deutschland':811,'Österreich':42,'Frankreich':29,'Schweiz':16},
+    gewinn:{'25€ Gutschein':184,'AH300':40,'sPulse':21,'Massage Gun':20}},
+  days:[]
 };
-// Platzhalter-Mai erzeugen (klar als BEISPIEL markiert)
-(function(){
-  const seed=[19,22,17,25,30,14,12,18,21,27,33,29,16,11,24,28,31,20,15,23,26,34,19,13,22,30,18,25,21,17,28];
-  for(let d=1; d<=31; d++){
-    const u=seed[d-1];
-    const rezi=Math.round(u*0.92);
-    const bild=Math.round(rezi*(0.40+((d%5)*0.03)));
-    SAMPLE.days.push({
-      date:`2025-05-${String(d).padStart(2,'0')}`,
-      gesamtNutzer:u, reziProdukte:rezi, ohneRezi:u-rezi,
-      abgeschlossen:Math.round(rezi*0.55), fotoHochgeladen:bild,
-      conversion:+( (bild/u)*100 ).toFixed(1), rezisBild:bild
-    });
-  }
-})();
+(function(){ for(let d=1;d<=31;d++){ const u=10+((d*7)%18), rezi=Math.round(u*0.92), bild=Math.round(rezi*(0.4+((d%5)*0.03)));
+  SAMPLE.days.push({date:`2025-05-${String(d).padStart(2,'0')}`,gesamtNutzer:u,reziProdukte:rezi,ohneRezi:u-rezi,
+    abgeschlossen:Math.round(rezi*0.55),fotoHochgeladen:bild,conversion:+((bild/u)*100).toFixed(1),rezisBild:bild}); } })();
 
 const fmt = n => new Intl.NumberFormat('de-DE').format(n);
+const de  = n => String(n).replace('.',',');
 const monthName = ym => new Date(ym+'-01').toLocaleDateString('de-DE',{month:'long',year:'numeric'});
-let DATA, mainChart, convChart;
+let DATA, charts=[];
 
-async function load(){
-  try{
-    const r = await fetch('./data.json',{cache:'no-store'});
-    if(!r.ok) throw 0;
-    DATA = await r.json();
-    if(!DATA.days || !DATA.days.length) DATA = SAMPLE; // noch keine echten Daten → Vorschau
-  }catch(e){ DATA = SAMPLE; }
-  initMonths();
+if(window.Chart){ Chart.defaults.color='#8b92a0'; Chart.defaults.borderColor='#262c38'; Chart.defaults.font.family='Segoe UI,system-ui,sans-serif'; }
+function killCharts(){ charts.forEach(c=>c&&c.destroy()); charts=[]; }
+const gridY={color:'#1f2632'}, gridX={display:false};
+
+function load(){
+  // Daten kommen aus data.js (window.DASHBOARD_DATA) — funktioniert lokal (file://) UND online.
+  DATA = (window.DASHBOARD_DATA && window.DASHBOARD_DATA.campaign && window.DASHBOARD_DATA.days && window.DASHBOARD_DATA.days.length)
+    ? window.DASHBOARD_DATA : SAMPLE;
+  buildTabs();
 }
 
-function initMonths(){
-  const months=[...new Set(DATA.days.map(d=>d.date.slice(0,7)))].sort();
-  const sel=document.getElementById('monthSelect');
-  sel.innerHTML=months.map(m=>`<option value="${m}">${monthName(m)}</option>`).join('');
-  sel.value=months[months.length-1];
-  sel.onchange=()=>render(sel.value);
-  render(sel.value);
+function buildTabs(){
+  const months=[...new Set(DATA.days.map(d=>d.date.slice(0,7)))].sort().reverse();
+  const tabs=[{id:'__overview__',label:'Kampagne gesamt'}, ...months.map(m=>({id:m,label:monthName(m)}))];
+  const nav=document.getElementById('tabs');
+  nav.innerHTML=tabs.map((t,i)=>`<button class="tab${i===0?' active':''}" data-id="${t.id}">${t.label}</button>`).join('');
+  nav.querySelectorAll('.tab').forEach(btn=>btn.onclick=()=>{
+    nav.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active'); show(btn.dataset.id);
+  });
+  document.getElementById('stand').textContent='Stand '+((DATA.meta&&DATA.meta.updated)? new Date(DATA.meta.updated).toLocaleDateString('de-DE') : '—');
+  show('__overview__');
 }
 
-function render(ym){
+function show(id){
+  killCharts();
+  document.getElementById('banner').className='banner';
+  if(id==='__overview__') renderOverview(); else renderMonth(id);
+  document.getElementById('foot').innerHTML =
+    'Eigenständiges Dashboard · unabhängig vom PMO-Dashboard · nur aggregierte Zahlen, kein PII.<br>'+
+    '<b>Monats-Tabs</b>: Tageswerte aus den 9-Uhr-Berichten · Conversion (Bild) = Rezis mit Bild&nbsp;/&nbsp;Nutzer.&nbsp;&nbsp; '+
+    '<b>Kampagne gesamt</b>: eigenständig aus dem All-in-One-Flyer-Sheet berechnet (seit 12.03.2026).';
+}
+
+function starRows(sterne, total){
+  const order=['5','4','3','2','1'];
+  const max=Math.max(...order.map(k=>sterne[k]||0),1);
+  return order.map(k=>{ const n=sterne[k]||0, p=total?Math.round(n/total*100):0;
+    return `<div class="srow"><span class="st">${k}★</span>
+      <div class="strack"><div class="sfill" style="width:${(n/max*100).toFixed(0)}%"></div></div>
+      <span class="sn">${fmt(n)}</span><span class="sp">${p}%</span></div>`; }).join('');
+}
+function barList(obj){
+  const ent=Object.entries(obj).sort((a,b)=>b[1]-a[1]);
+  const max=Math.max(...ent.map(e=>e[1]),1);
+  return ent.map(([k,v])=>`<div class="bar-row"><div class="lbl" title="${k}">${k}</div>
+    <div class="track"><div class="fill" style="width:${(v/max*100).toFixed(1)}%"></div></div>
+    <div class="num">${fmt(v)}</div></div>`).join('');
+}
+
+/* ---------- Tab: Kampagne gesamt ---------- */
+function renderOverview(){
+  const C=DATA.campaign;
+  const kc=(t,v,c,h)=>`<div class="card"><div class="ktitle">${t}</div><div class="kval ${c||''}">${v}</div><div class="khint">${h||''}</div></div>`;
+  const cards=[
+    kc('Teilnehmer', fmt(C.teilnehmer), '', 'haben gespielt (seit 12.03.2026)'),
+    kc('Zu Ende gespielt', fmt(C.zuEnde), 'green', de(C.conversionPct)+' % der Teilnehmer'),
+    kc('Fotos hochgeladen', fmt(C.fotosHochgeladen), 'red', fmt(C.fotosValidiert)+' validiert (Sterne &gt; 0)'),
+    kc('Ø Produktbewertung', de(C.avgSterne), 'amber', 'von 5 · '+fmt(C.bewertungen)+' Bewertungen'),
+    kc('Completed (Spalte)', fmt(C.completed), '', 'alternative Definition aus Sheet-Spalte'),
+  ].join('');
+  document.getElementById('view').innerHTML=`
+    <div class="grid cards">${cards}
+      <div class="card wide"><div class="ktitle">Sterne-Verteilung</div>${starRows(C.sterne, C.bewertungen)}</div>
+    </div>
+    <div class="grid charts">
+      <div class="card"><h3>Plattform-Verteilung (Bewertungen)</h3><div class="chart-box"><canvas id="cPlat"></canvas></div></div>
+      <div class="card"><h3>Teilnehmer nach Land</h3>${barList(C.land)}</div>
+    </div>
+    <div class="grid twocol">
+      <div class="card"><h3>Vergebene Gewinne</h3>${barList(C.gewinn)}</div>
+      <div class="card"><h3>Sterne-Verteilung (Chart)</h3><div class="chart-box" style="height:240px"><canvas id="cStars"></canvas></div></div>
+    </div>`;
+  const palette=['#e2001a','#3b82f6','#f59e0b','#22c55e','#a855f7','#14b8a6','#ec4899','#64748b'];
+  charts.push(new Chart(document.getElementById('cPlat'),{type:'doughnut',
+    data:{labels:Object.keys(C.plattform),datasets:[{data:Object.values(C.plattform),backgroundColor:palette,borderWidth:2,borderColor:'#161b24'}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'}}}}));
+  const so=['5','4','3','2','1'];
+  charts.push(new Chart(document.getElementById('cStars'),{type:'bar',
+    data:{labels:so.map(s=>s+'★'),datasets:[{data:so.map(s=>C.sterne[s]||0),backgroundColor:'#f5c518',borderRadius:4}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:gridY},x:{grid:gridX}}}}));
+}
+
+/* ---------- Tab: Monat (Tageswerte aus den 9-Uhr-Berichten) ---------- */
+function renderMonth(ym){
   const days=DATA.days.filter(d=>d.date.startsWith(ym)).sort((a,b)=>a.date.localeCompare(b.date));
   const sum=k=>days.reduce((s,d)=>s+(d[k]||0),0);
-  const totU=sum('gesamtNutzer'), totBild=sum('rezisBild'), totRezi=sum('reziProdukte');
-  const avgConv = totU? (totBild/totU*100):0;
+  const totN=sum('gesamtNutzer'), totB=sum('rezisBild'), totRezi=sum('reziProdukte');
+  const nDays=days.length||1;
+  const conv=totN?(totB/totN*100):0;
+  let best={c:-1};
+  days.forEach(d=>{ const c=d.gesamtNutzer?(d.rezisBild/d.gesamtNutzer*100):0; if(c>best.c) best={c,d}; });
+  const bestDM=best.d?new Date(best.d.date).toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit'}):'—';
 
-  // Banner
-  const b=document.getElementById('banner');
-  if((DATA.meta&&DATA.meta.source)==='sample'){
-    b.className='banner sample';
-    b.textContent='⚠ BEISPIELDATEN — Platzhalter zur Vorschau. Sobald Power Automate echte Tagesberichte schreibt, ersetzt data.json diese Werte automatisch.';
-  } else { b.className='banner'; }
+  if(DATA.meta&&DATA.meta.source==='sample'){
+    const b=document.getElementById('banner'); b.className='banner show';
+    b.textContent='⚠ BEISPIELDATEN — data.json konnte nicht geladen werden (z.B. beim lokalen Öffnen via Doppelklick). Online über Vercel erscheinen die echten Tageswerte automatisch.';
+  }
+  const WHITE='#e6e8ec', GREEN='#22c55e', ORANGE='#f97316';
+  const kc=(t,v,vc,acc,h)=>`<div class="card kpi-acc" style="--acc:${acc}">
+    <div class="ktitle">${t}</div><div class="kval" style="color:${vc}">${v}</div><div class="khint">${h}</div></div>`;
 
-  // KPIs
-  document.getElementById('kpis').innerHTML = [
-    ['Gesamt Nutzer', fmt(totU), '', 'Summe '+monthName(ym)],
-    ['Rezis mit Bild', fmt(totBild), 'red', 'erzeugte Bild-Rezis'],
-    ['Ø Conversion', avgConv.toFixed(1)+'%', 'green', 'Bild-Rezis / Nutzer'],
-    ['Rezi Produkte', fmt(totRezi), '', 'Summe'],
-    ['Foto hochgeladen', fmt(sum('fotoHochgeladen')), '', 'Summe'],
-    ['Abgeschlossen', fmt(sum('abgeschlossen')), '', 'Summe'],
-  ].map(([l,v,c,h])=>`<div class="card kpi"><div class="label">${l}</div><div class="val ${c}">${v}</div><div class="hint">${h}</div></div>`).join('');
+  document.getElementById('view').innerHTML=`
+    <div class="sec"><span class="no">01</span>Monatsüberblick · ${monthName(ym)}</div>
+    <div class="grid cards">
+      ${kc('Gesamt Nutzer', fmt(totN), WHITE, GREEN, 'Ø '+de((totN/nDays).toFixed(1))+' / Tag')}
+      ${kc('Rezis erzeugt', fmt(totB), GREEN, GREEN, 'Ø '+de((totB/nDays).toFixed(1))+' / Tag')}
+      ${kc('Conversion', de(conv.toFixed(1))+' %', ORANGE, 'var(--red)', fmt(totB)+' / '+fmt(totN)+' Nutzer')}
+      ${kc('Beste Conversion', de(best.c.toFixed(1))+' %', GREEN, GREEN, best.d?('am '+bestDM+' ('+best.d.rezisBild+' / '+best.d.gesamtNutzer+')'):'—')}
+    </div>
 
-  // Tabelle
-  const tb=document.querySelector('#tbl tbody');
-  tb.innerHTML=days.map(d=>`<tr>
-    <td>${new Date(d.date).toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit'})}</td>
-    <td>${fmt(d.gesamtNutzer)}</td><td>${fmt(d.reziProdukte)}</td><td>${fmt(d.ohneRezi)}</td>
-    <td>${fmt(d.abgeschlossen)}</td><td>${fmt(d.fotoHochgeladen)}</td>
-    <td>${(d.conversion??0).toFixed(1)}%</td><td><strong>${fmt(d.rezisBild)}</strong></td>
-  </tr>`).join('');
-  document.querySelector('#tbl tfoot').innerHTML=`<tr>
-    <td>Gesamt (${days.length} Tage)</td><td>${fmt(totU)}</td><td>${fmt(totRezi)}</td>
-    <td>${fmt(sum('ohneRezi'))}</td><td>${fmt(sum('abgeschlossen'))}</td>
-    <td>${fmt(sum('fotoHochgeladen'))}</td><td>${avgConv.toFixed(1)}%</td><td>${fmt(totBild)}</td></tr>`;
+    <div class="sec"><span class="no">02</span>Tagesverlauf</div>
+    <div class="grid charts">
+      <div class="card"><h3>Nutzer vs. Rezis mit Bild</h3><div class="chart-box"><canvas id="cMain"></canvas></div></div>
+      <div class="card"><h3>Conversion-Rate pro Tag</h3><div class="chart-box"><canvas id="cConv"></canvas></div></div>
+    </div>
 
-  // Charts
+    <div class="sec"><span class="no">03</span>Tagesdaten</div>
+    <div class="card">
+      <div style="overflow-x:auto"><table>
+        <thead><tr><th>Datum</th><th>Gesamt Nutzer</th><th>Rezi Produkte</th><th>Ohne Rezi</th>
+          <th>Abgeschlossen</th><th>Foto hochgeladen</th><th>Conversion</th><th>Rezis (Bild)</th></tr></thead>
+        <tbody>${days.map(d=>`<tr>
+          <td>${new Date(d.date).toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit'})}</td>
+          <td>${fmt(d.gesamtNutzer)}</td><td>${fmt(d.reziProdukte)}</td><td>${fmt(d.ohneRezi)}</td>
+          <td>${fmt(d.abgeschlossen)}</td><td>${fmt(d.fotoHochgeladen)}</td>
+          <td>${de((d.conversion??0).toFixed(1))}%</td><td><strong>${fmt(d.rezisBild)}</strong></td></tr>`).join('')}</tbody>
+        <tfoot><tr><td>Gesamt (${days.length} Tage)</td><td>${fmt(totN)}</td><td>${fmt(totRezi)}</td>
+          <td>${fmt(sum('ohneRezi'))}</td><td>${fmt(sum('abgeschlossen'))}</td><td>${fmt(sum('fotoHochgeladen'))}</td>
+          <td>${de(conv.toFixed(1))}%</td><td>${fmt(totB)}</td></tr></tfoot>
+      </table></div>
+    </div>`;
+
   const labels=days.map(d=>new Date(d.date).toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit'}));
-  mainChart && mainChart.destroy(); convChart && convChart.destroy();
-  const grid={color:'#eef0f4'};
-  mainChart=new Chart(document.getElementById('chartMain'),{type:'line',
+  charts.push(new Chart(document.getElementById('cMain'),{type:'line',
     data:{labels,datasets:[
-      {label:'Gesamt Nutzer',data:days.map(d=>d.gesamtNutzer),borderColor:'#1a1a1f',backgroundColor:'rgba(26,26,31,.06)',tension:.3,fill:true},
-      {label:'Rezis mit Bild',data:days.map(d=>d.rezisBild),borderColor:'#e2001a',backgroundColor:'rgba(226,0,26,.08)',tension:.3,fill:true}
-    ]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'}},scales:{y:{beginAtZero:true,grid},x:{grid:{display:false}}}}});
-  convChart=new Chart(document.getElementById('chartConv'),{type:'bar',
-    data:{labels,datasets:[{label:'Conversion %',data:days.map(d=>d.conversion),backgroundColor:'#16a34a',borderRadius:4}]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid,ticks:{callback:v=>v+'%'}},x:{grid:{display:false}}}}});
-
-  const upd=(DATA.meta&&DATA.meta.updated)?(' · zuletzt aktualisiert '+DATA.meta.updated):'';
-  document.getElementById('foot').textContent='Sportstech Gewinnrad · automatisch aus den 9:00-Tagesberichten'+upd;
+      {label:'Gesamt Nutzer',data:days.map(d=>d.gesamtNutzer),borderColor:'#e6e8ec',backgroundColor:'rgba(230,232,236,.06)',tension:.3,fill:true},
+      {label:'Rezis mit Bild',data:days.map(d=>d.rezisBild),borderColor:'#22c55e',backgroundColor:'rgba(34,197,94,.12)',tension:.3,fill:true}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'}},scales:{y:{beginAtZero:true,grid:gridY},x:{grid:gridX}}}}));
+  charts.push(new Chart(document.getElementById('cConv'),{type:'bar',
+    data:{labels,datasets:[{label:'Conversion %',data:days.map(d=>d.conversion),backgroundColor:'#f97316',borderRadius:4}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:gridY,ticks:{callback:v=>v+'%'}},x:{grid:gridX}}}}));
 }
+
 load();
 </script>
 </body>

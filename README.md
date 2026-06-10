@@ -1,51 +1,64 @@
-# Gewinnrad Dashboard
+# Gewinnspiel KPI Dashboard
 
-Automatisiertes Dashboard für das Sportstech **Gewinnrad-Gewinnspiel**. Liest die täglichen
-9:00-Uhr-Tagesberichte aus Outlook (Ordner *Gewinnrad Bewertungen*) und zeigt pro Monat:
-Gesamt Nutzer, Rezi-Produkte, Rezis mit Bild, Conversion-Rate, Tagesverlauf.
+Eigenständiges Dashboard für das Sportstech **Gewinnrad-Gewinnspiel** (All-in-One Flyer).
+Dunkles, self-contained HTML-Dashboard (kein Build nötig) mit zwei Sichten:
 
-## Aufbau (3 Schichten)
+- **Kampagne gesamt** — Aggregate über die ganze Kampagne (seit 12.03.2026): Teilnehmer,
+  zu Ende gespielt, Fotos, Ø Produktbewertung, Sterne-/Plattform-/Land-/Gewinn-Verteilung.
+- **Monats-Tabs** — die 4 Kern-KPIs pro Monat: **Gesamt Nutzer · Rezis erzeugt · Conversion ·
+  Beste Conversion**, plus Tagesverlauf und Tagestabelle.
 
-```
-Outlook  ──Power Automate──►  Excel (OneDrive)
-                              gewinnrad.json (OneDrive, anonymer Link)
-                                        │
-                              Vercel-Dashboard (index.html) liest data.json
-```
+> Komplett **unabhängig vom PMO-Dashboard** und **PII-frei** (nur aggregierte Zahlen).
+
+## Zwei Datenquellen — bewusst getrennt
+
+| Sicht | Quelle | Warum |
+|---|---|---|
+| **Monats-Tabs** (Tageswerte) | 9-Uhr-Mail-Tagesberichte | Das Live-System zählt pro Tag korrekt. |
+| **Kampagne gesamt** | All-in-One-Flyer-Sheet (`Gewinnrad_nutzer` + `Gewinnrad_Rezi`) | Authentische Gesamtsummen. |
+
+⚠️ Die Tagesreihe **nicht** aus dem Sheet bauen: die Spalte `Gewinnrad_Rezi.created` ist ein
+Batch-Import-Zeitstempel (alle Fotos auf einen Tag geklumpt), taugt nicht für eine echte Tagesreihe.
 
 ## Dateien
-- `index.html` — das komplette Dashboard (eigenständig, kein Build nötig).
-- `data.json` — Datenquelle. Wird von Power Automate befüllt. Solange leer → Beispieldaten.
+- `index.html` — das komplette Dashboard (dunkles Theme, Chart.js via CDN).
+- `data.js` — **die geladene Datenquelle.** Setzt `window.DASHBOARD_DATA`. Wird per `<script>`-Tag
+  eingebunden → funktioniert **lokal (file://) und online** identisch (kein `fetch`-/CORS-Problem).
+- `data.json` — lesbare Quell-Kopie desselben Inhalts (für Diffs/Doku). `data.js` ist maßgeblich.
 
-## Datenschema (`data.json`)
-```json
-{
-  "meta": { "source": "live", "updated": "2025-06-05" },
-  "days": [
-    { "date":"2025-05-01","gesamtNutzer":19,"reziProdukte":18,"ohneRezi":1,
-      "abgeschlossen":9,"fotoHochgeladen":8,"conversion":44.4,"rezisBild":8 }
-  ]
-}
+## Datenschema
+```js
+window.DASHBOARD_DATA = {
+  meta: { source:"live", updated:"2026-06-10", hinweis:"…" },
+  campaign: {
+    teilnehmer:906, zuEnde:267, completed:314, conversionPct:29.5,
+    fotosHochgeladen:164, fotosValidiert:140, bewertungen:807, avgSterne:4.57,
+    sterne:{ "5":523,"4":232,"3":44,"2":3,"1":5 },
+    plattform:{…}, land:{…}, gewinn:{…}
+  },
+  days: [ { date:"2026-05-01", gesamtNutzer:15, reziProdukte:15, ohneRezi:0,
+            abgeschlossen:6, fotoHochgeladen:4, conversion:26.7, rezisBild:4 }, … ]
+};
 ```
 
-## Power-Automate-Flow (ohne Admin / ohne Premium)
-1. **Trigger:** *Bei Eingang einer neuen E-Mail (V3)* — Ordner `Gewinnrad Bewertungen`,
-   Betrefffilter `Gewinnrad Tagesbericht` (nur die 9:00-Mail, nicht die 16:00-Zwischenberichte).
-2. **HTML in Text** — Mail-Body in sauberen Text wandeln.
-3. **Verfassen** pro Kennzahl — Wert vor dem Label ausschneiden, z. B. *Gesamt Nutzer*:
-   `trim(last(split(first(split(<HTMLzuText>, 'Gesamt Nutzer')), decodeUriComponent('%0A'))))`
-4. **Zeile zu Tabelle hinzufügen** (Excel Online) → `Gewinnrad_Daten.xlsx` / Tabelle `Daten`.
-5. **(Brücke zum Dashboard)** Excel-Inhalt als JSON zusammensetzen und per
-   *Datei erstellen/aktualisieren* nach OneDrive als `gewinnrad.json` schreiben →
-   anonymen Freigabe-Link erzeugen → diesen Link als `data.json`-Quelle im Dashboard nutzen.
+## KPI-Definitionen (transparent)
+- **Teilnehmer** = Sheet-Zeile mit Zeitstempel (`Created`). Hinweis: das PMO filtert ~8 Test-/Admin-Zeilen → 898.
+- **Zu Ende gespielt** = letzte Seite „Zu Ende gespielt" (267). *Alternative:* Sheet-Spalte `Completed=TRUE` (314).
+- **Conversion** (Monats-KPI) = Rezis mit Bild / Gesamt Nutzer.
+- **Beste Conversion** = bester Einzeltag im Monat.
 
-> **Robuster Endausbau:** Sobald der Kollege (Report-Ersteller) die Zahlen als **CSV-Anhang**
-> mitschickt, ersetzen wir Schritt 2–3 durch *CSV einlesen* — dann ist die Pipeline unabhängig
-> vom Mail-Layout.
+## Deployment (Vercel via GitHub)
+Statische Seite, kein Node-Build. Repo zu Vercel verbinden → jeder Commit löst Auto-Deploy aus.
+Git-Identität (Sportstech-Standard, lokal pro Repo): `user.name=PMO-SP`, `user.email=pmo@sportstech.de`.
 
-## Deployment (Vercel, wie Wishbeat)
-Statische Seite — einfach den Ordner zu Vercel deployen. Kein Node-Build nötig.
+## Ziel-Architektur (voll automatisch)
+```
+9-Uhr-Mail ─► Power Automate (Flow 1, täglich) ─┐
+                                                 ├─► GitHub (data.js) ─► Vercel Auto-Deploy ─► Link
+Flyer-Sheet ─► Power Automate (Flow 2, wöchentl.)┘
+```
+Power Automate schreibt die neuen Zahlen per GitHub-Connector ins Repo; Vercel baut automatisch neu.
 
-## May-Auswertung nachtragen
-Sobald die echten Mai-Zahlen vorliegen (Parsing-Backfill oder CSV vom Kollegen),
-in `data.json` unter `days` eintragen — das Dashboard rechnet Summen & Conversion automatisch.
+## Daten manuell aktualisieren (Fallback)
+Frischen Sheet-Export (`.xlsx`) ablegen und `update-data.ps1` ausführen — regeneriert die
+Kampagnen-Aggregate in `data.js`/`data.json`. Tageswerte kommen aus den Mails (siehe Flow 1).

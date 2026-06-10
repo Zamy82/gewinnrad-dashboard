@@ -1,4 +1,4 @@
-{
+window.DASHBOARD_DATA = {
     "meta":  {
                  "source":  "live",
                  "updated":  "2026-06-10",
@@ -568,4 +568,4 @@
                      "rezisBild":  4
                  }
              ]
-}
+};
