@@ -56,6 +56,145 @@ window.DASHBOARD_DATA = {
                                     "1,5kg hanteln":  1
                                 }
                  },
+    "monthly":  {
+                    "2026-03":  {
+                                    "teilnehmer":  179,
+                                    "sterne":  {
+                                                   "5":  89,
+                                                   "4":  46,
+                                                   "3":  6,
+                                                   "2":  0,
+                                                   "1":  0
+                                               },
+                                    "land":  {
+                                                 "Deutschland":  159,
+                                                 "Österreich":  10,
+                                                 "Schweiz":  5,
+                                                 "Frankreich":  4,
+                                                 "USA":  1
+                                             },
+                                    "gewinn":  {
+                                                   "25€ sportstech gutschein":  43,
+                                                   "ah300_hantelset":  4,
+                                                   "massage_gun":  3,
+                                                   "pulsgurt":  2,
+                                                   "spulse":  2,
+                                                   "bodenschutzmatte":  2
+                                               },
+                                    "plattform":  {
+                                                      "Sportstech.de":  61,
+                                                      "Amazon":  25,
+                                                      "Otto":  10,
+                                                      "Decathlon.de":  2,
+                                                      "Trustpilot":  2,
+                                                      "Unknown":  2
+                                                  }
+                                },
+                    "2026-04":  {
+                                    "teilnehmer":  386,
+                                    "sterne":  {
+                                                   "5":  249,
+                                                   "4":  91,
+                                                   "3":  16,
+                                                   "2":  0,
+                                                   "1":  0
+                                               },
+                                    "land":  {
+                                                 "Deutschland":  344,
+                                                 "Österreich":  21,
+                                                 "Frankreich":  16,
+                                                 "Niederlande":  1,
+                                                 "Italien":  1,
+                                                 "Republik Österreich":  1,
+                                                 "Luxemburg":  1,
+                                                 "Rumänien":  1
+                                             },
+                                    "gewinn":  {
+                                                   "25€ sportstech gutschein":  93,
+                                                   "ah300_hantelset":  23,
+                                                   "spulse":  14,
+                                                   "massage_gun":  8,
+                                                   "bodenschutzmatte":  8,
+                                                   "hantelbank":  4,
+                                                   "sportstech_subscription":  3,
+                                                   "pulsgurt":  3,
+                                                   "trinkflasche":  2,
+                                                   "1,5kg hanteln":  1
+                                               },
+                                    "plattform":  {
+                                                      "Sportstech.de":  202,
+                                                      "Amazon":  105,
+                                                      "Otto":  21,
+                                                      "Trustpilot":  7,
+                                                      "Unknown":  6,
+                                                      "Mediamarkt":  3,
+                                                      "eBay":  2
+                                                  }
+                                },
+                    "2026-05":  {
+                                    "teilnehmer":  284,
+                                    "sterne":  {
+                                                   "5":  157,
+                                                   "4":  76,
+                                                   "3":  19,
+                                                   "2":  3,
+                                                   "1":  4
+                                               },
+                                    "land":  {
+                                                 "Deutschland":  259,
+                                                 "Schweiz":  10,
+                                                 "Österreich":  10,
+                                                 "Frankreich":  4,
+                                                 "Spanien":  1
+                                             },
+                                    "gewinn":  {
+                                                   "25€ sportstech gutschein":  40,
+                                                   "ah300_hantelset":  12,
+                                                   "hantelbank":  8,
+                                                   "massage_gun":  7,
+                                                   "spulse":  3,
+                                                   "sportstech_subscription":  2,
+                                                   "trinkflasche":  1
+                                               },
+                                    "plattform":  {
+                                                      "Sportstech.de":  169,
+                                                      "Amazon":  78,
+                                                      "Otto":  14,
+                                                      "Mediamarkt":  3,
+                                                      "Trustpilot":  2,
+                                                      "Galaxus.ch":  2
+                                                  }
+                                },
+                    "2026-06":  {
+                                    "teilnehmer":  57,
+                                    "sterne":  {
+                                                   "5":  28,
+                                                   "4":  19,
+                                                   "3":  3,
+                                                   "2":  0,
+                                                   "1":  1
+                                               },
+                                    "land":  {
+                                                 "Deutschland":  49,
+                                                 "Frankreich":  5,
+                                                 "Schweiz":  1,
+                                                 "Österreich":  1,
+                                                 "Republik Österreich":  1
+                                             },
+                                    "gewinn":  {
+                                                   "25€ sportstech gutschein":  8,
+                                                   "massage_gun":  2,
+                                                   "spulse":  2,
+                                                   "ah300_hantelset":  1,
+                                                   "sportstech_subscription":  1
+                                               },
+                                    "plattform":  {
+                                                      "Sportstech.de":  32,
+                                                      "Amazon":  18,
+                                                      "Otto":  3
+                                                  }
+                                }
+                },
     "days":  [
                  {
                      "date":  "2026-04-15",
@@ -565,6 +704,56 @@ window.DASHBOARD_DATA = {
                      "abgeschlossen":  2,
                      "fotoHochgeladen":  4,
                      "conversion":  57.1,
+                     "rezisBild":  4
+                 },
+                 {
+                     "date":  "2026-06-05",
+                     "gesamtNutzer":  10,
+                     "reziProdukte":  8,
+                     "ohneRezi":  2,
+                     "abgeschlossen":  3,
+                     "fotoHochgeladen":  1,
+                     "conversion":  12.5,
+                     "rezisBild":  1
+                 },
+                 {
+                     "date":  "2026-06-06",
+                     "gesamtNutzer":  14,
+                     "reziProdukte":  12,
+                     "ohneRezi":  2,
+                     "abgeschlossen":  3,
+                     "fotoHochgeladen":  2,
+                     "conversion":  16.7,
+                     "rezisBild":  2
+                 },
+                 {
+                     "date":  "2026-06-07",
+                     "gesamtNutzer":  4,
+                     "reziProdukte":  4,
+                     "ohneRezi":  0,
+                     "abgeschlossen":  1,
+                     "fotoHochgeladen":  1,
+                     "conversion":  25,
+                     "rezisBild":  1
+                 },
+                 {
+                     "date":  "2026-06-08",
+                     "gesamtNutzer":  9,
+                     "reziProdukte":  9,
+                     "ohneRezi":  0,
+                     "abgeschlossen":  5,
+                     "fotoHochgeladen":  6,
+                     "conversion":  66.7,
+                     "rezisBild":  6
+                 },
+                 {
+                     "date":  "2026-06-09",
+                     "gesamtNutzer":  14,
+                     "reziProdukte":  14,
+                     "ohneRezi":  0,
+                     "abgeschlossen":  3,
+                     "fotoHochgeladen":  4,
+                     "conversion":  28.6,
                      "rezisBild":  4
                  }
              ]

@@ -59,17 +59,35 @@ $campaign=[ordered]@{
   sterne=$sterne; plattform=$plat; land=$land; gewinn=$gewinn
 }
 
-# --- bestehende Tageswerte (days) aus data.json uebernehmen ---
+# --- Monats-Verteilungen (Plattform/Land/Gewinn/Sterne pro Monat, aus dem Sheet) ---
+$monthly=[ordered]@{}
+foreach($g in ($nutzer | Group-Object { $_.Created.Substring(0,7) } | Sort-Object Name)){
+  $m=$g.Name
+  $rs = $g.Group | Where-Object { $_.Sterne -match '^[1-5]$' }
+  $st=[ordered]@{}; 5,4,3,2,1 | ForEach-Object { $v=$_; $st["$v"]=@($rs | Where-Object {[int]$_.Sterne -eq $v}).Count }
+  $ld=[ordered]@{}; $g.Group | Group-Object Land | Sort-Object Count -Descending | ForEach-Object { if($_.Name -and $_.Name.Trim() -ne ''){ $ld[$_.Name]=$_.Count } }
+  $gw=[ordered]@{}; $g.Group | Where-Object { $_.Gewinn -and $_.Gewinn.Trim() -ne '' } | Group-Object Gewinn | Sort-Object Count -Descending | ForEach-Object { $gw[$_.Name]=$_.Count }
+  $monthly[$m]=[ordered]@{ teilnehmer=$g.Count; sterne=$st; land=$ld; gewinn=$gw; plattform=[ordered]@{} }
+}
+foreach($g in ($rezi | Where-Object { $_.Zeit_des_Spiels -and $_.Zeit_des_Spiels.Length -ge 7 } | Group-Object { $_.Zeit_des_Spiels.Substring(0,7) })){
+  $m=$g.Name
+  if(-not $monthly.Contains($m)){ $monthly[$m]=[ordered]@{teilnehmer=0;sterne=[ordered]@{};land=[ordered]@{};gewinn=[ordered]@{};plattform=[ordered]@{}} }
+  $pl=[ordered]@{}; $g.Group | Group-Object platform | Sort-Object Count -Descending | ForEach-Object { if($_.Name -and $_.Name.Trim() -ne '' -and $_.Count -ge 2){ $pl[$_.Name]=$_.Count } }
+  $monthly[$m].plattform=$pl
+}
+
+# --- bestehende Tageswerte (days) aus data.json uebernehmen (kommen aus den Mails) ---
 $existing = Get-Content (Join-Path $ProjectDir 'data.json') -Raw -Encoding UTF8 | ConvertFrom-Json
 $today = (Get-Date).ToString('yyyy-MM-dd')
 
 $out=[ordered]@{
   meta=[ordered]@{ source='live'; updated=$today; hinweis=$existing.meta.hinweis }
   campaign=$campaign
+  monthly=$monthly
   days=$existing.days
 }
 $json = $out | ConvertTo-Json -Depth 6
 $enc = New-Object System.Text.UTF8Encoding($false)
 [System.IO.File]::WriteAllText((Join-Path $ProjectDir 'data.json'), $json, $enc)
 [System.IO.File]::WriteAllText((Join-Path $ProjectDir 'data.js'), "window.DASHBOARD_DATA = $json;", $enc)
-Write-Host "OK — Kampagne aktualisiert: Teilnehmer=$($campaign.teilnehmer) zuEnde=$($campaign.zuEnde) Fotos=$($campaign.fotosHochgeladen). Tage unveraendert: $($out.days.Count)."
+Write-Host "OK — Kampagne: Teilnehmer=$($campaign.teilnehmer) zuEnde=$($campaign.zuEnde) Fotos=$($campaign.fotosHochgeladen). Monats-Verteilungen: $($monthly.Count) Monate. Tage (aus Mails) unveraendert: $($out.days.Count)."

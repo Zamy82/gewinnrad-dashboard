@@ -134,7 +134,10 @@ function buildTabs(){
     nav.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active'); show(btn.dataset.id);
   });
-  document.getElementById('stand').textContent='Stand '+((DATA.meta&&DATA.meta.updated)? new Date(DATA.meta.updated).toLocaleDateString('de-DE') : '—');
+  const lastDay = (DATA.days && DATA.days.length) ? DATA.days.map(d=>d.date).sort().slice(-1)[0] : null;
+  const ld = lastDay ? new Date(lastDay).toLocaleDateString('de-DE') : '—';
+  const up = (DATA.meta&&DATA.meta.updated)? new Date(DATA.meta.updated).toLocaleDateString('de-DE') : '—';
+  document.getElementById('stand').textContent='Tageswerte bis '+ld+' · Kampagne '+up;
   show('__overview__');
 }
 
@@ -216,6 +219,18 @@ function renderMonth(ym){
   const kc=(t,v,vc,acc,h)=>`<div class="card kpi-acc" style="--acc:${acc}">
     <div class="ktitle">${t}</div><div class="kval" style="color:${vc}">${v}</div><div class="khint">${h}</div></div>`;
 
+  const M = DATA.monthly && DATA.monthly[ym];
+  const breakdown = M ? `
+    <div class="sec"><span class="no">04</span>Verteilungen <span style="font-size:13px;color:var(--muted);font-weight:600;letter-spacing:0;text-transform:none">· aus dem Flyer-Sheet · ${fmt(M.teilnehmer)} Teilnehmer</span></div>
+    <div class="grid charts">
+      <div class="card"><h3>Plattform-Verteilung (Bewertungen)</h3><div class="chart-box"><canvas id="cmPlat"></canvas></div></div>
+      <div class="card"><h3>Teilnehmer nach Land</h3>${barList(M.land)}</div>
+    </div>
+    <div class="grid twocol">
+      <div class="card"><h3>Vergebene Gewinne</h3>${barList(M.gewinn)}</div>
+      <div class="card"><h3>Sterne-Verteilung</h3><div class="chart-box" style="height:240px"><canvas id="cmStars"></canvas></div></div>
+    </div>` : '';
+
   document.getElementById('view').innerHTML=`
     <div class="sec"><span class="no">01</span>Monatsüberblick · ${monthName(ym)}</div>
     <div class="grid cards">
@@ -245,7 +260,8 @@ function renderMonth(ym){
           <td>${fmt(sum('ohneRezi'))}</td><td>${fmt(sum('abgeschlossen'))}</td><td>${fmt(sum('fotoHochgeladen'))}</td>
           <td>${de(conv.toFixed(1))}%</td><td>${fmt(totB)}</td></tr></tfoot>
       </table></div>
-    </div>`;
+    </div>
+    ${breakdown}`;
 
   const labels=days.map(d=>new Date(d.date).toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit'}));
   charts.push(new Chart(document.getElementById('cMain'),{type:'line',
@@ -256,6 +272,17 @@ function renderMonth(ym){
   charts.push(new Chart(document.getElementById('cConv'),{type:'bar',
     data:{labels,datasets:[{label:'Conversion %',data:days.map(d=>d.conversion),backgroundColor:'#f97316',borderRadius:4}]},
     options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:gridY,ticks:{callback:v=>v+'%'}},x:{grid:gridX}}}}));
+
+  if(M){
+    const pal=['#e2001a','#3b82f6','#f59e0b','#22c55e','#a855f7','#14b8a6','#ec4899','#64748b'];
+    charts.push(new Chart(document.getElementById('cmPlat'),{type:'doughnut',
+      data:{labels:Object.keys(M.plattform),datasets:[{data:Object.values(M.plattform),backgroundColor:pal,borderWidth:2,borderColor:'#161b24'}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'}}}}));
+    const so=['5','4','3','2','1'];
+    charts.push(new Chart(document.getElementById('cmStars'),{type:'bar',
+      data:{labels:so.map(s=>s+'★'),datasets:[{data:so.map(s=>M.sterne[s]||0),backgroundColor:'#f5c518',borderRadius:4}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:gridY},x:{grid:gridX}}}}));
+  }
 }
 
 load();
