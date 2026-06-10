@@ -62,3 +62,13 @@ Power Automate schreibt die neuen Zahlen per GitHub-Connector ins Repo; Vercel b
 ## Daten manuell aktualisieren (Fallback)
 Frischen Sheet-Export (`.xlsx`) ablegen und `update-data.ps1` ausführen — regeneriert die
 Kampagnen-Aggregate in `data.js`/`data.json`. Tageswerte kommen aus den Mails (siehe Flow 1).
+
+## Backlog / Geplante Erweiterungen
+- [ ] **Welche Produkte haben eine Rezension erhalten?** (Wunsch Zamy, 10.06.2026 — umsetzen NACH der
+      Automatisierung). Neue Sicht „Rezensierte Produkte": pro Produkt die Anzahl Rezensionen, idealerweise
+      aufgeschlüsselt nach Plattform (Amazon / Otto / Sportstech.de / Trustpilot …).
+      **Datenquellen liegen bereits vor:**
+      - Pro Tag: Tabelle *„Rezi-Summary (Produkt × Plattform)"* in jedem 9-Uhr-Bericht.
+      - Kampagne gesamt: Sheet-Tab *„Rezi Conversion"* (`Rezi Conversion.csv`, Produkt × Plattform-Kreuztabelle)
+        bzw. `Gewinnrad_Rezi.csv` (Spalten `Order`/Produkt + `platform`).
+      Einbau analog zu den bestehenden Verteilungs-Karten (Balkenliste je Monat + Kampagne).
