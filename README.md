@@ -64,11 +64,10 @@ Frischen Sheet-Export (`.xlsx`) ablegen und `update-data.ps1` ausführen — reg
 Kampagnen-Aggregate in `data.js`/`data.json`. Tageswerte kommen aus den Mails (siehe Flow 1).
 
 ## Backlog / Geplante Erweiterungen
-- [ ] **Welche Produkte haben eine Rezension erhalten?** (Wunsch Zamy, 10.06.2026 — umsetzen NACH der
-      Automatisierung). Neue Sicht „Rezensierte Produkte": pro Produkt die Anzahl Rezensionen, idealerweise
-      aufgeschlüsselt nach Plattform (Amazon / Otto / Sportstech.de / Trustpilot …).
-      **Datenquellen liegen bereits vor:**
-      - Pro Tag: Tabelle *„Rezi-Summary (Produkt × Plattform)"* in jedem 9-Uhr-Bericht.
-      - Kampagne gesamt: Sheet-Tab *„Rezi Conversion"* (`Rezi Conversion.csv`, Produkt × Plattform-Kreuztabelle)
-        bzw. `Gewinnrad_Rezi.csv` (Spalten `Order`/Produkt + `platform`).
-      Einbau analog zu den bestehenden Verteilungs-Karten (Balkenliste je Monat + Kampagne).
+- [x] **Welche Produkte haben eine Rezension erhalten?** ✅ umgesetzt 11.06.2026 — Sicht „Rezensierte Produkte"
+      (Produkt × Plattform-Matrix) in Kampagne-gesamt + Monats-Tabs. Quelle: `Gewinnrad_Rezi.csv`,
+      Definition = Rezension mit Bild (`Bewertungs_Foto` befüllt). Plattform `Sportstech.de` wird mit
+      `Trustpilot` zusammengefasst (so wie in den Tagesberichten). Berechnung steckt in `update-data.ps1`.
+- [ ] **Phase 3 — Sheet-Anbindung automatisieren:** die Sheet-basierten Sichten (Kampagne-Aggregate,
+      Verteilungen, rezensierte Produkte) wöchentlich automatisch frisch ziehen — analog zu Flow 1,
+      aber Quelle = All-in-One-Flyer-Sheet statt Mail. Bis dahin: manuell via `update-data.ps1`.
