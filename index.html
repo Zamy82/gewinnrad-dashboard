@@ -167,6 +167,23 @@ function barList(obj){
     <div class="num">${fmt(v)}</div></div>`).join('');
 }
 
+// Produkt × Plattform-Tabelle (rezensierte Produkte mit Bild)
+function reviewedProductsTable(list){
+  if(!list || !list.length) return '<div class="khint" style="padding:4px 2px">Keine Daten.</div>';
+  const platTotals={};
+  list.forEach(p=>Object.entries(p.platforms||{}).forEach(([k,v])=>platTotals[k]=(platTotals[k]||0)+v));
+  let cols=Object.entries(platTotals).sort((a,b)=>b[1]-a[1]).map(e=>e[0]);
+  let andere=false; const MAX=5;
+  if(cols.length>MAX){ andere=true; cols=cols.slice(0,MAX); }
+  const head='<th>Produkt</th>'+cols.map(c=>`<th>${c}</th>`).join('')+(andere?'<th>Andere</th>':'')+'<th>Gesamt</th>';
+  const rows=[...list].sort((a,b)=>b.total-a.total).map(p=>{
+    const cells=cols.map(c=>`<td>${p.platforms[c]||'–'}</td>`).join('');
+    let rest=0; if(andere) Object.entries(p.platforms).forEach(([k,v])=>{ if(!cols.includes(k)) rest+=v; });
+    return `<tr><td title="${p.product}">${p.product}</td>${cells}${andere?`<td>${rest||'–'}</td>`:''}<td><strong>${p.total}</strong></td></tr>`;
+  }).join('');
+  return `<div style="overflow:auto;max-height:440px"><table><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table></div>`;
+}
+
 /* ---------- Tab: Kampagne gesamt ---------- */
 function renderOverview(){
   const C=DATA.campaign;
@@ -189,7 +206,9 @@ function renderOverview(){
     <div class="grid twocol">
       <div class="card"><h3>Vergebene Gewinne</h3>${barList(C.gewinn)}</div>
       <div class="card"><h3>Sterne-Verteilung (Chart)</h3><div class="chart-box" style="height:240px"><canvas id="cStars"></canvas></div></div>
-    </div>`;
+    </div>
+    <div class="sec">Rezensierte Produkte <span style="font-size:13px;color:var(--muted);font-weight:600;letter-spacing:0;text-transform:none">· mit Bild · ${fmt(C.fotosHochgeladen)} Bild-Rezensionen · Produkt × Plattform · aus dem Flyer-Sheet</span></div>
+    <div class="card">${reviewedProductsTable(C.reviewedProducts)}</div>`;
   const palette=['#e2001a','#3b82f6','#f59e0b','#22c55e','#a855f7','#14b8a6','#ec4899','#64748b'];
   charts.push(new Chart(document.getElementById('cPlat'),{type:'doughnut',
     data:{labels:Object.keys(C.plattform),datasets:[{data:Object.values(C.plattform),backgroundColor:palette,borderWidth:2,borderColor:'#161b24'}]},
@@ -229,7 +248,9 @@ function renderMonth(ym){
     <div class="grid twocol">
       <div class="card"><h3>Vergebene Gewinne</h3>${barList(M.gewinn)}</div>
       <div class="card"><h3>Sterne-Verteilung</h3><div class="chart-box" style="height:240px"><canvas id="cmStars"></canvas></div></div>
-    </div>` : '';
+    </div>
+    <div class="sec"><span class="no">05</span>Rezensierte Produkte <span style="font-size:13px;color:var(--muted);font-weight:600;letter-spacing:0;text-transform:none">· mit Bild · Produkt × Plattform · aus dem Flyer-Sheet</span></div>
+    <div class="card">${reviewedProductsTable(M.reviewedProducts)}</div>` : '';
 
   document.getElementById('view').innerHTML=`
     <div class="sec"><span class="no">01</span>Monatsüberblick · ${monthName(ym)}</div>
