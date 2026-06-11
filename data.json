@@ -21,10 +21,9 @@
                                     "5":  523
                                 },
                      "plattform":  {
-                                       "Sportstech.de":  464,
+                                       "Trustpilot":  475,
                                        "Amazon":  226,
                                        "Otto":  48,
-                                       "Trustpilot":  11,
                                        "Unknown":  9,
                                        "Mediamarkt":  6,
                                        "Decathlon.de":  4,
@@ -61,18 +60,16 @@
                                                   "total":  22,
                                                   "platforms":  {
                                                                     "Amazon":  13,
-                                                                    "Sportstech.de":  8,
-                                                                    "Trustpilot":  1
+                                                                    "Trustpilot":  9
                                                                 }
                                               },
                                               {
                                                   "product":  "Sportstech WalkMate",
                                                   "total":  14,
                                                   "platforms":  {
-                                                                    "Sportstech.de":  9,
+                                                                    "Trustpilot":  10,
                                                                     "Otto":  2,
                                                                     "Amazon":  1,
-                                                                    "Trustpilot":  1,
                                                                     "Unknown":  1
                                                                 }
                                               },
@@ -80,7 +77,7 @@
                                                   "product":  "Sportstech sWalk Lite Plus",
                                                   "total":  11,
                                                   "platforms":  {
-                                                                    "Sportstech.de":  6,
+                                                                    "Trustpilot":  6,
                                                                     "Otto":  3,
                                                                     "Amazon":  2
                                                                 }
@@ -89,16 +86,16 @@
                                                   "product":  "Sportstech WRX500 Rudergerät OAK",
                                                   "total":  9,
                                                   "platforms":  {
-                                                                    "Sportstech.de":  7,
-                                                                    "Amazon":  1,
-                                                                    "Galaxus.ch":  1
+                                                                    "Trustpilot":  7,
+                                                                    "Galaxus.ch":  1,
+                                                                    "Amazon":  1
                                                                 }
                                               },
                                               {
                                                   "product":  "Sportstech sWalk Lite",
                                                   "total":  8,
                                                   "platforms":  {
-                                                                    "Sportstech.de":  5,
+                                                                    "Trustpilot":  5,
                                                                     "Amazon":  3
                                                                 }
                                               },
@@ -106,15 +103,14 @@
                                                   "product":  "Sportstech sPad1000 Laufband",
                                                   "total":  7,
                                                   "platforms":  {
-                                                                    "Sportstech.de":  6,
-                                                                    "Trustpilot":  1
+                                                                    "Trustpilot":  7
                                                                 }
                                               },
                                               {
                                                   "product":  "Sportstech sWalk Plus 2 Boxen Set",
                                                   "total":  6,
                                                   "platforms":  {
-                                                                    "Sportstech.de":  5,
+                                                                    "Trustpilot":  5,
                                                                     "Otto":  1
                                                                 }
                                               },
@@ -122,7 +118,7 @@
                                                   "product":  "Sportstech Hantelbank BRT250",
                                                   "total":  5,
                                                   "platforms":  {
-                                                                    "Sportstech.de":  3,
+                                                                    "Trustpilot":  3,
                                                                     "Amazon":  2
                                                                 }
                                               },
@@ -131,7 +127,7 @@
                                                   "total":  5,
                                                   "platforms":  {
                                                                     "Amazon":  3,
-                                                                    "Sportstech.de":  1,
+                                                                    "Trustpilot":  1,
                                                                     "Otto":  1
                                                                 }
                                               },
@@ -147,9 +143,8 @@
                                                   "product":  "Sportstech Indoor Cycle SX175",
                                                   "total":  4,
                                                   "platforms":  {
-                                                                    "Amazon":  2,
-                                                                    "Sportstech.de":  1,
-                                                                    "Trustpilot":  1
+                                                                    "Trustpilot":  2,
+                                                                    "Amazon":  2
                                                                 }
                                               },
                                               {
@@ -157,21 +152,21 @@
                                                   "total":  4,
                                                   "platforms":  {
                                                                     "Amazon":  3,
-                                                                    "Sportstech.de":  1
+                                                                    "Trustpilot":  1
                                                                 }
                                               },
                                               {
                                                   "product":  "Sportstech sPulse",
                                                   "total":  4,
                                                   "platforms":  {
-                                                                    "Sportstech.de":  4
+                                                                    "Trustpilot":  4
                                                                 }
                                               },
                                               {
                                                   "product":  "Sportstech WRX1000 WN V3",
                                                   "total":  3,
                                                   "platforms":  {
-                                                                    "Sportstech.de":  2,
+                                                                    "Trustpilot":  2,
                                                                     "Mediamarkt":  1
                                                                 }
                                               },
@@ -179,15 +174,14 @@
                                                   "product":  "Sportstech CX700 V2 Crosstrainer",
                                                   "total":  3,
                                                   "platforms":  {
-                                                                    "Sportstech.de":  3
+                                                                    "Trustpilot":  3
                                                                 }
                                               },
                                               {
                                                   "product":  "[Bundle] Sportstech sGymPro 21 inch + BRT400 + 12M STL Abo",
                                                   "total":  3,
                                                   "platforms":  {
-                                                                    "Sportstech.de":  2,
-                                                                    "Trustpilot":  1
+                                                                    "Trustpilot":  3
                                                                 }
                                               },
                                               {
@@ -201,85 +195,82 @@
                                                   "product":  "sWalk L Wood",
                                                   "total":  2,
                                                   "platforms":  {
-                                                                    "Trustpilot":  1,
-                                                                    "Sportstech.de":  1
+                                                                    "Trustpilot":  2
                                                                 }
                                               },
                                               {
                                                   "product":  "Sporstech sBike Speedbike Schwarz V2",
                                                   "total":  2,
                                                   "platforms":  {
-                                                                    "Sportstech.de":  1,
-                                                                    "Amazon":  1
+                                                                    "Amazon":  1,
+                                                                    "Trustpilot":  1
                                                                 }
                                               },
                                               {
                                                   "product":  "SP_PROwer_BL",
                                                   "total":  2,
                                                   "platforms":  {
-                                                                    "Sportstech.de":  2
+                                                                    "Trustpilot":  2
                                                                 }
                                               },
                                               {
                                                   "product":  "Sportstech sWalk Grey Laufband",
                                                   "total":  2,
                                                   "platforms":  {
-                                                                    "Sportstech.de":  2
+                                                                    "Trustpilot":  2
                                                                 }
                                               },
                                               {
                                                   "product":  "[Bundle] Sportstech sGymPro 21 inch + sGymBench + 12M STL Abo",
                                                   "total":  2,
                                                   "platforms":  {
-                                                                    "Sportstech.de":  2
+                                                                    "Trustpilot":  2
                                                                 }
                                               },
                                               {
                                                   "product":  "Sportstech sPad500 Laufband",
                                                   "total":  2,
                                                   "platforms":  {
-                                                                    "Sportstech.de":  1,
-                                                                    "Trustpilot":  1
+                                                                    "Trustpilot":  2
                                                                 }
                                               },
                                               {
                                                   "product":  "Sportstech SP_F37s Laufband",
                                                   "total":  2,
                                                   "platforms":  {
-                                                                    "Sportstech.de":  1,
-                                                                    "Trustpilot":  1
+                                                                    "Trustpilot":  2
                                                                 }
                                               },
                                               {
                                                   "product":  "Sportstech sTread Fold Pro Laufband",
                                                   "total":  2,
                                                   "platforms":  {
-                                                                    "Sportstech.de":  1,
-                                                                    "Amazon":  1
+                                                                    "Amazon":  1,
+                                                                    "Trustpilot":  1
                                                                 }
                                               },
                                               {
                                                   "product":  "Sportstech Profi Laufband F10",
                                                   "total":  2,
                                                   "platforms":  {
-                                                                    "Amazon":  1,
-                                                                    "Sportstech.de":  1
+                                                                    "Trustpilot":  1,
+                                                                    "Amazon":  1
                                                                 }
                                               },
                                               {
                                                   "product":  "Sportstech Rückentrainer BRT500 Schwarz",
                                                   "total":  2,
                                                   "platforms":  {
-                                                                    "Sportstech.de":  1,
-                                                                    "Amazon":  1
+                                                                    "Amazon":  1,
+                                                                    "Trustpilot":  1
                                                                 }
                                               },
                                               {
                                                   "product":  "SP_PROwer_OAK",
                                                   "total":  2,
                                                   "platforms":  {
-                                                                    "Sportstech.de":  1,
-                                                                    "Otto":  1
+                                                                    "Otto":  1,
+                                                                    "Trustpilot":  1
                                                                 }
                                               },
                                               {
@@ -293,7 +284,7 @@
                                                   "product":  "Sportstech BM216 Bodenschutzmatte groß Version 2",
                                                   "total":  1,
                                                   "platforms":  {
-                                                                    "Sportstech.de":  1
+                                                                    "Trustpilot":  1
                                                                 }
                                               },
                                               {
@@ -307,7 +298,7 @@
                                                   "product":  "Sportstech Live Abo 12 Monate",
                                                   "total":  1,
                                                   "platforms":  {
-                                                                    "Sportstech.de":  1
+                                                                    "Trustpilot":  1
                                                                 }
                                               },
                                               {
@@ -321,7 +312,7 @@
                                                   "product":  "[Bundle] Sportstech sGymPro 21 inch + 12M STL Abo",
                                                   "total":  1,
                                                   "platforms":  {
-                                                                    "Sportstech.de":  1
+                                                                    "Trustpilot":  1
                                                                 }
                                               },
                                               {
@@ -356,7 +347,7 @@
                                                   "product":  "Sportstech Laufband WoodPad Pro LWD",
                                                   "total":  1,
                                                   "platforms":  {
-                                                                    "Sportstech.de":  1
+                                                                    "Trustpilot":  1
                                                                 }
                                               },
                                               {
@@ -370,7 +361,7 @@
                                                   "product":  "Sportstech Crosstrainer CX625 Version 2",
                                                   "total":  1,
                                                   "platforms":  {
-                                                                    "Sportstech.de":  1
+                                                                    "Trustpilot":  1
                                                                 }
                                               },
                                               {
@@ -391,14 +382,14 @@
                                                   "product":  "Sportstech Laufband F75 21inch",
                                                   "total":  1,
                                                   "platforms":  {
-                                                                    "Sportstech.de":  1
+                                                                    "Trustpilot":  1
                                                                 }
                                               },
                                               {
                                                   "product":  "Sportstech Speedbike sBike 10inch schwarz",
                                                   "total":  1,
                                                   "platforms":  {
-                                                                    "Sportstech.de":  1
+                                                                    "Trustpilot":  1
                                                                 }
                                               },
                                               {
@@ -412,14 +403,14 @@
                                                   "product":  "Sportstech SXM150",
                                                   "total":  1,
                                                   "platforms":  {
-                                                                    "Sportstech.de":  1
+                                                                    "Trustpilot":  1
                                                                 }
                                               },
                                               {
                                                   "product":  "[Bundle] Sportstech sCross + sRow V2 21.5 inch",
                                                   "total":  1,
                                                   "platforms":  {
-                                                                    "Sportstech.de":  1
+                                                                    "Trustpilot":  1
                                                                 }
                                               },
                                               {
@@ -433,14 +424,14 @@
                                                   "product":  "Sportstech Rudergerät AquaElite WN mit Display 10\"",
                                                   "total":  1,
                                                   "platforms":  {
-                                                                    "Sportstech.de":  1
+                                                                    "Trustpilot":  1
                                                                 }
                                               },
                                               {
                                                   "product":  "Sportstech Hantel Ironmate 24",
                                                   "total":  1,
                                                   "platforms":  {
-                                                                    "Sportstech.de":  1
+                                                                    "Trustpilot":  1
                                                                 }
                                               },
                                               {
@@ -468,7 +459,7 @@
                                                   "product":  "[Bundle] Sportstech sRow V2 + sTread Pro 21.5 inch",
                                                   "total":  1,
                                                   "platforms":  {
-                                                                    "Sportstech.de":  1
+                                                                    "Trustpilot":  1
                                                                 }
                                               }
                                           ]
@@ -499,19 +490,18 @@
                                                    "bodenschutzmatte":  2
                                                },
                                     "plattform":  {
-                                                      "Sportstech.de":  61,
+                                                      "Trustpilot":  63,
                                                       "Amazon":  25,
                                                       "Otto":  10,
-                                                      "Decathlon.de":  2,
-                                                      "Trustpilot":  2,
-                                                      "Unknown":  2
+                                                      "Unknown":  2,
+                                                      "Decathlon.de":  2
                                                   },
                                     "reviewedProducts":  [
                                                              {
                                                                  "product":  "Sportstech sWalk Lite Plus",
                                                                  "total":  5,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  3,
+                                                                                   "Trustpilot":  3,
                                                                                    "Otto":  2
                                                                                }
                                                              },
@@ -519,14 +509,14 @@
                                                                  "product":  "Sportstech sPulse",
                                                                  "total":  2,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  2
+                                                                                   "Trustpilot":  2
                                                                                }
                                                              },
                                                              {
                                                                  "product":  "Sportstech CX700 V2 Crosstrainer",
                                                                  "total":  1,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  1
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              },
                                                              {
@@ -547,14 +537,14 @@
                                                                  "product":  "Sportstech Profi Laufband F10",
                                                                  "total":  1,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  1
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              },
                                                              {
                                                                  "product":  "Sportstech sWalk Grey Laufband",
                                                                  "total":  1,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  1
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              },
                                                              {
@@ -605,10 +595,9 @@
                                                    "1,5kg hanteln":  1
                                                },
                                     "plattform":  {
-                                                      "Sportstech.de":  202,
+                                                      "Trustpilot":  209,
                                                       "Amazon":  105,
                                                       "Otto":  21,
-                                                      "Trustpilot":  7,
                                                       "Unknown":  6,
                                                       "Mediamarkt":  3,
                                                       "eBay":  2
@@ -618,10 +607,9 @@
                                                                  "product":  "Sportstech WalkMate",
                                                                  "total":  13,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  8,
+                                                                                   "Trustpilot":  9,
                                                                                    "Otto":  2,
                                                                                    "Amazon":  1,
-                                                                                   "Trustpilot":  1,
                                                                                    "Unknown":  1
                                                                                }
                                                              },
@@ -630,14 +618,14 @@
                                                                  "total":  10,
                                                                  "platforms":  {
                                                                                    "Amazon":  7,
-                                                                                   "Sportstech.de":  3
+                                                                                   "Trustpilot":  3
                                                                                }
                                                              },
                                                              {
                                                                  "product":  "Sportstech sWalk Lite",
                                                                  "total":  5,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  4,
+                                                                                   "Trustpilot":  4,
                                                                                    "Amazon":  1
                                                                                }
                                                              },
@@ -646,7 +634,7 @@
                                                                  "total":  5,
                                                                  "platforms":  {
                                                                                    "Amazon":  3,
-                                                                                   "Sportstech.de":  1,
+                                                                                   "Trustpilot":  1,
                                                                                    "Otto":  1
                                                                                }
                                                              },
@@ -654,15 +642,14 @@
                                                                  "product":  "[Bundle] Sportstech sGymPro 21 inch + BRT400 + 12M STL Abo",
                                                                  "total":  3,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  2,
-                                                                                   "Trustpilot":  1
+                                                                                   "Trustpilot":  3
                                                                                }
                                                              },
                                                              {
                                                                  "product":  "Sportstech Hantelbank BRT250",
                                                                  "total":  3,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  2,
+                                                                                   "Trustpilot":  2,
                                                                                    "Amazon":  1
                                                                                }
                                                              },
@@ -670,16 +657,15 @@
                                                                  "product":  "sWalk L Wood",
                                                                  "total":  2,
                                                                  "platforms":  {
-                                                                                   "Trustpilot":  1,
-                                                                                   "Sportstech.de":  1
+                                                                                   "Trustpilot":  2
                                                                                }
                                                              },
                                                              {
                                                                  "product":  "Sportstech Rückentrainer BRT500 Schwarz",
                                                                  "total":  2,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  1,
-                                                                                   "Amazon":  1
+                                                                                   "Amazon":  1,
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              },
                                                              {
@@ -693,61 +679,60 @@
                                                                  "product":  "Sportstech sWalk Lite Plus",
                                                                  "total":  2,
                                                                  "platforms":  {
-                                                                                   "Amazon":  1,
-                                                                                   "Otto":  1
+                                                                                   "Otto":  1,
+                                                                                   "Amazon":  1
                                                                                }
                                                              },
                                                              {
                                                                  "product":  "Sportstech sWalk Grey Wood",
                                                                  "total":  2,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  1,
-                                                                                   "Amazon":  1
+                                                                                   "Amazon":  1,
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              },
                                                              {
                                                                  "product":  "Sportstech sTread Fold Pro Laufband",
                                                                  "total":  2,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  1,
-                                                                                   "Amazon":  1
+                                                                                   "Amazon":  1,
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              },
                                                              {
                                                                  "product":  "Sportstech PT300 V2 Power Tower",
                                                                  "total":  2,
                                                                  "platforms":  {
-                                                                                   "Trustpilot":  1,
-                                                                                   "Amazon":  1
+                                                                                   "Amazon":  1,
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              },
                                                              {
                                                                  "product":  "Sportstech Indoor Cycle SX175",
                                                                  "total":  2,
                                                                  "platforms":  {
-                                                                                   "Trustpilot":  1,
-                                                                                   "Sportstech.de":  1
+                                                                                   "Trustpilot":  2
                                                                                }
                                                              },
                                                              {
                                                                  "product":  "Sportstech CX700 V2 Crosstrainer",
                                                                  "total":  2,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  2
+                                                                                   "Trustpilot":  2
                                                                                }
                                                              },
                                                              {
                                                                  "product":  "Sportstech sPad1000 Laufband",
                                                                  "total":  2,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  2
+                                                                                   "Trustpilot":  2
                                                                                }
                                                              },
                                                              {
                                                                  "product":  "Sportstech Laufband F75 21inch",
                                                                  "total":  1,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  1
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              },
                                                              {
@@ -768,7 +753,7 @@
                                                                  "product":  "Sportstech WRX1000 WN V3",
                                                                  "total":  1,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  1
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              },
                                                              {
@@ -789,14 +774,14 @@
                                                                  "product":  "[Bundle] Sportstech sRow V2 + sTread Pro 21.5 inch",
                                                                  "total":  1,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  1
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              },
                                                              {
                                                                  "product":  "SP_PROwer_BL",
                                                                  "total":  1,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  1
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              },
                                                              {
@@ -810,7 +795,7 @@
                                                                  "product":  "Sportstech sPad500 Laufband",
                                                                  "total":  1,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  1
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              },
                                                              {
@@ -824,28 +809,28 @@
                                                                  "product":  "[Bundle] Sportstech sCross + sRow V2 21.5 inch",
                                                                  "total":  1,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  1
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              },
                                                              {
                                                                  "product":  "Sportstech sWalk Plus 2 Boxen Set",
                                                                  "total":  1,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  1
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              },
                                                              {
                                                                  "product":  "Sportstech SXM150",
                                                                  "total":  1,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  1
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              },
                                                              {
                                                                  "product":  "SP_PROwer_OAK",
                                                                  "total":  1,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  1
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              },
                                                              {
@@ -873,7 +858,7 @@
                                                                  "product":  "Sportstech Speedbike sBike 10inch schwarz",
                                                                  "total":  1,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  1
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              },
                                                              {
@@ -887,7 +872,7 @@
                                                                  "product":  "Sportstech sPulse",
                                                                  "total":  1,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  1
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              }
                                                          ]
@@ -918,11 +903,10 @@
                                                    "trinkflasche":  1
                                                },
                                     "plattform":  {
-                                                      "Sportstech.de":  169,
+                                                      "Trustpilot":  171,
                                                       "Amazon":  78,
                                                       "Otto":  14,
                                                       "Mediamarkt":  3,
-                                                      "Trustpilot":  2,
                                                       "Galaxus.ch":  2
                                                   },
                                     "reviewedProducts":  [
@@ -931,23 +915,23 @@
                                                                  "total":  11,
                                                                  "platforms":  {
                                                                                    "Amazon":  6,
-                                                                                   "Sportstech.de":  5
+                                                                                   "Trustpilot":  5
                                                                                }
                                                              },
                                                              {
                                                                  "product":  "Sportstech WRX500 Rudergerät OAK",
                                                                  "total":  9,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  7,
-                                                                                   "Amazon":  1,
-                                                                                   "Galaxus.ch":  1
+                                                                                   "Trustpilot":  7,
+                                                                                   "Galaxus.ch":  1,
+                                                                                   "Amazon":  1
                                                                                }
                                                              },
                                                              {
                                                                  "product":  "Sportstech sWalk Plus 2 Boxen Set",
                                                                  "total":  4,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  3,
+                                                                                   "Trustpilot":  3,
                                                                                    "Otto":  1
                                                                                }
                                                              },
@@ -955,15 +939,14 @@
                                                                  "product":  "Sportstech sPad1000 Laufband",
                                                                  "total":  3,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  2,
-                                                                                   "Trustpilot":  1
+                                                                                   "Trustpilot":  3
                                                                                }
                                                              },
                                                              {
                                                                  "product":  "Sportstech sWalk Lite Plus",
                                                                  "total":  3,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  2,
+                                                                                   "Trustpilot":  2,
                                                                                    "Amazon":  1
                                                                                }
                                                              },
@@ -971,7 +954,7 @@
                                                                  "product":  "[Bundle] Sportstech sGymPro 21 inch + sGymBench + 12M STL Abo",
                                                                  "total":  2,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  2
+                                                                                   "Trustpilot":  2
                                                                                }
                                                              },
                                                              {
@@ -985,8 +968,8 @@
                                                                  "product":  "Sportstech sWalk Lite",
                                                                  "total":  2,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  1,
-                                                                                   "Amazon":  1
+                                                                                   "Amazon":  1,
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              },
                                                              {
@@ -1000,8 +983,8 @@
                                                                  "product":  "Sportstech WRX1000 WN V3",
                                                                  "total":  2,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  1,
-                                                                                   "Mediamarkt":  1
+                                                                                   "Mediamarkt":  1,
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              },
                                                              {
@@ -1015,7 +998,7 @@
                                                                  "product":  "Sportstech sWalk Grey Laufband",
                                                                  "total":  1,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  1
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              },
                                                              {
@@ -1036,7 +1019,7 @@
                                                                  "product":  "SP_PROwer_BL",
                                                                  "total":  1,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  1
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              },
                                                              {
@@ -1050,7 +1033,7 @@
                                                                  "product":  "Sporstech sBike Speedbike Schwarz V2",
                                                                  "total":  1,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  1
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              },
                                                              {
@@ -1071,7 +1054,7 @@
                                                                  "product":  "Sportstech Live Abo 12 Monate",
                                                                  "total":  1,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  1
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              },
                                                              {
@@ -1085,28 +1068,28 @@
                                                                  "product":  "Sportstech Hantel Ironmate 24",
                                                                  "total":  1,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  1
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              },
                                                              {
                                                                  "product":  "Sportstech Hantelbank BRT250",
                                                                  "total":  1,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  1
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              },
                                                              {
                                                                  "product":  "Sportstech Rudergerät AquaElite WN mit Display 10\"",
                                                                  "total":  1,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  1
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              },
                                                              {
                                                                  "product":  "Sportstech BM216 Bodenschutzmatte groß Version 2",
                                                                  "total":  1,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  1
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              },
                                                              {
@@ -1127,14 +1110,14 @@
                                                                  "product":  "[Bundle] Sportstech sGymPro 21 inch + 12M STL Abo",
                                                                  "total":  1,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  1
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              },
                                                              {
                                                                  "product":  "Sportstech sPulse",
                                                                  "total":  1,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  1
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              }
                                                          ]
@@ -1163,7 +1146,7 @@
                                                    "sportstech_subscription":  1
                                                },
                                     "plattform":  {
-                                                      "Sportstech.de":  32,
+                                                      "Trustpilot":  32,
                                                       "Amazon":  18,
                                                       "Otto":  3
                                                   },
@@ -1172,21 +1155,21 @@
                                                                  "product":  "Sportstech sPad1000 Laufband",
                                                                  "total":  2,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  2
+                                                                                   "Trustpilot":  2
                                                                                }
                                                              },
                                                              {
                                                                  "product":  "Sportstech WalkMate",
                                                                  "total":  1,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  1
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              },
                                                              {
                                                                  "product":  "Sportstech Laufband WoodPad Pro LWD",
                                                                  "total":  1,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  1
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              },
                                                              {
@@ -1200,28 +1183,28 @@
                                                                  "product":  "Sportstech SP_F37s Laufband",
                                                                  "total":  1,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  1
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              },
                                                              {
                                                                  "product":  "Sportstech Crosstrainer CX625 Version 2",
                                                                  "total":  1,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  1
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              },
                                                              {
                                                                  "product":  "Sportstech sWalk Plus 2 Boxen Set",
                                                                  "total":  1,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  1
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              },
                                                              {
                                                                  "product":  "Sportstech sWalk Lite Plus",
                                                                  "total":  1,
                                                                  "platforms":  {
-                                                                                   "Sportstech.de":  1
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              },
                                                              {
