@@ -187,13 +187,15 @@ function reviewedProductsTable(list){
 /* ---------- Tab: Kampagne gesamt ---------- */
 function renderOverview(){
   const C=DATA.campaign;
-  const kc=(t,v,c,h)=>`<div class="card"><div class="ktitle">${t}</div><div class="kval ${c||''}">${v}</div><div class="khint">${h||''}</div></div>`;
+  const WHITE='#e6e8ec', GREEN='#22c55e', RED='var(--red)', AMBER='#f59e0b';
+  const kc=(t,v,vc,acc,h)=>`<div class="card kpi-acc" style="--acc:${acc}">
+    <div class="ktitle">${t}</div><div class="kval" style="color:${vc}">${v}</div><div class="khint">${h||''}</div></div>`;
   const cards=[
-    kc('Teilnehmer', fmt(C.teilnehmer), '', 'haben gespielt (seit 12.03.2026)'),
-    kc('Zu Ende gespielt', fmt(C.zuEnde), 'green', de(C.conversionPct)+' % der Teilnehmer'),
-    kc('Fotos hochgeladen', fmt(C.fotosHochgeladen), 'red', fmt(C.fotosValidiert)+' validiert (Sterne &gt; 0)'),
-    kc('Ø Produktbewertung', de(C.avgSterne), 'amber', 'von 5 · '+fmt(C.bewertungen)+' Bewertungen'),
-    kc('Completed (Spalte)', fmt(C.completed), '', 'alternative Definition aus Sheet-Spalte'),
+    kc('Teilnehmer', fmt(C.teilnehmer), WHITE, GREEN, 'haben gespielt (seit 12.03.2026)'),
+    kc('Zu Ende gespielt', fmt(C.zuEnde), GREEN, GREEN, de(C.conversionPct)+' % der Teilnehmer'),
+    kc('Fotos hochgeladen', fmt(C.fotosHochgeladen), RED, RED, fmt(C.fotosValidiert)+' validiert (Sterne &gt; 0)'),
+    kc('Ø Produktbewertung', de(C.avgSterne), AMBER, AMBER, 'von 5 · '+fmt(C.bewertungen)+' Bewertungen'),
+    kc('Completed (Spalte)', fmt(C.completed), WHITE, GREEN, 'alternative Definition aus Sheet-Spalte'),
   ].join('');
   document.getElementById('view').innerHTML=`
     <div class="grid cards">${cards}
