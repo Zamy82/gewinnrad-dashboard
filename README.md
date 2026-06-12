@@ -68,6 +68,9 @@ Kampagnen-Aggregate in `data.js`/`data.json`. Tageswerte kommen aus den Mails (s
       (Produkt × Plattform-Matrix) in Kampagne-gesamt + Monats-Tabs. Quelle: `Gewinnrad_Rezi.csv`,
       Definition = Rezension mit Bild (`Bewertungs_Foto` befüllt). Plattform `Sportstech.de` wird mit
       `Trustpilot` zusammengefasst (so wie in den Tagesberichten). Berechnung steckt in `update-data.ps1`.
-- [ ] **Phase 3 — Sheet-Anbindung automatisieren:** die Sheet-basierten Sichten (Kampagne-Aggregate,
-      Verteilungen, rezensierte Produkte) wöchentlich automatisch frisch ziehen — analog zu Flow 1,
-      aber Quelle = All-in-One-Flyer-Sheet statt Mail. Bis dahin: manuell via `update-data.ps1`.
+- **Phase 3 — Sheet-Anbindung:** Voll-Automatik via Pipedream+Google-OAuth wurde **bewusst verworfen**
+      (11.06.2026) — Pipedreams Google-Connector verlangt breiten „alle Drive-Dateien"-Zugriff auf das
+      (Firmen-)Google-Konto, unverhältnismäßig fürs Lesen eines Sheets. **Entscheidung: semi-automatisch.**
+      Kampagne/Verteilungen/Produkte werden bei Bedarf per `update-data.ps1` aktualisiert (Sheet als `.xlsx`
+      exportieren → Skript → commit/push). Voll-Auto bliebe nur möglich, wenn der Kollege **PII-freie
+      Auswertungs-Tabs** als CSV „im Web veröffentlicht" — dann könnten wir die ohne Google-Login ziehen.
