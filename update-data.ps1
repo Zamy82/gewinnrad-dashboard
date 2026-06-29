@@ -1,4 +1,4 @@
-<#
+﻿<#
   update-data.ps1  —  Regeneriert die KAMPAGNEN-Aggregate in data.js / data.json
   aus einem frischen Export des All-in-One-Flyer-Sheets.
 
@@ -95,8 +95,11 @@ foreach($g in ($rezi | Where-Object { $_.Zeit_des_Spiels -and $_.Zeit_des_Spiels
   $monthly[$m].reviewedProducts = (ProductList $mfoto)
 }
 
-# --- bestehende Tageswerte (days) aus data.json uebernehmen (kommen aus den Mails) ---
-$existing = Get-Content (Join-Path $ProjectDir 'data.json') -Raw -Encoding UTF8 | ConvertFrom-Json
+# --- bestehende Tageswerte (days) aus data.js uebernehmen (kommen aus den Mails) ---
+# WICHTIG: data.js ist maßgeblich — der 9-Uhr-Tagesbot committet NUR data.js, nicht data.json.
+# Daher days/meta IMMER aus data.js lesen, sonst werden neue Tageswerte ueberschrieben.
+$djsRaw = Get-Content (Join-Path $ProjectDir 'data.js') -Raw -Encoding UTF8
+$existing = ($djsRaw -replace '^\s*window\.DASHBOARD_DATA\s*=\s*','' -replace ';\s*$','') | ConvertFrom-Json
 $today = (Get-Date).ToString('yyyy-MM-dd')
 
 $out=[ordered]@{
