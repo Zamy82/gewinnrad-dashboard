@@ -1,51 +1,51 @@
 {
     "meta":  {
                  "source":  "live",
-                 "updated":  "2026-06-29",
+                 "updated":  "2026-07-02",
                  "hinweis":  "Tageswerte: aus den 9-Uhr-Berichten des Gewinnspiel-Systems (zuverlaessig pro Tag). Kampagnen-Aggregate: eigenstaendig aus dem All-in-One-Flyer-Sheet berechnet. Nur Aggregate, kein PII. Unabhaengig vom PMO-Dashboard."
              },
     "campaign":  {
-                     "teilnehmer":  1168,
-                     "zuEnde":  340,
-                     "completed":  397,
+                     "teilnehmer":  1182,
+                     "zuEnde":  344,
+                     "completed":  401,
                      "conversionPct":  29.1,
-                     "fotosHochgeladen":  238,
-                     "fotosValidiert":  200,
-                     "bewertungen":  1056,
+                     "fotosHochgeladen":  241,
+                     "fotosValidiert":  202,
+                     "bewertungen":  1070,
                      "avgSterne":  4.57,
                      "sterne":  {
-                                    "5":  685,
-                                    "4":  302,
-                                    "3":  60,
+                                    "5":  692,
+                                    "4":  307,
+                                    "3":  61,
                                     "2":  4,
-                                    "1":  5
+                                    "1":  6
                                 },
                      "plattform":  {
-                                       "Trustpilot":  604,
-                                       "Amazon":  315,
-                                       "Otto":  67,
+                                       "Trustpilot":  611,
+                                       "Amazon":  321,
+                                       "Otto":  68,
                                        "Unknown":  11,
                                        "Mediamarkt":  10,
                                        "Decathlon.de":  7,
                                        "Galaxus.ch":  4
                                    },
                      "land":  {
-                                  "Deutschland":  1024,
-                                  "Österreich":  54,
+                                  "Deutschland":  1035,
+                                  "Österreich":  56,
                                   "Frankreich":  48,
                                   "Schweiz":  27,
                                   "Italien":  4,
                                   "Republik Österreich":  2,
                                   "Niederlande":  2,
+                                  "USA":  2,
                                   "Spanien":  2,
                                   "Rumänien":  2,
                                   "Bulgarien":  1,
-                                  "USA":  1,
                                   "Luxemburg":  1
                               },
                      "gewinn":  {
-                                    "25€ sportstech gutschein":  215,
-                                    "ah300_hantelset":  58,
+                                    "25€ sportstech gutschein":  218,
+                                    "ah300_hantelset":  59,
                                     "spulse":  28,
                                     "massage_gun":  26,
                                     "hantelbank":  25,
@@ -58,18 +58,18 @@
                      "reviewedProducts":  [
                                               {
                                                   "product":  "Sportstech sProRun Laufband",
-                                                  "total":  32,
+                                                  "total":  33,
                                                   "platforms":  {
                                                                     "Amazon":  17,
-                                                                    "Trustpilot":  13,
+                                                                    "Trustpilot":  14,
                                                                     "Otto":  2
                                                                 }
                                               },
                                               {
                                                   "product":  "Sportstech sWalk Lite Plus",
-                                                  "total":  20,
+                                                  "total":  21,
                                                   "platforms":  {
-                                                                    "Trustpilot":  13,
+                                                                    "Trustpilot":  14,
                                                                     "Otto":  5,
                                                                     "Amazon":  2
                                                                 }
@@ -135,19 +135,19 @@
                                                                 }
                                               },
                                               {
-                                                  "product":  "Sportstech Profi Laufband F10",
-                                                  "total":  6,
-                                                  "platforms":  {
-                                                                    "Trustpilot":  3,
-                                                                    "Amazon":  3
-                                                                }
-                                              },
-                                              {
                                                   "product":  "Sportstech Hantelbank BRT250",
                                                   "total":  6,
                                                   "platforms":  {
                                                                     "Trustpilot":  4,
                                                                     "Amazon":  2
+                                                                }
+                                              },
+                                              {
+                                                  "product":  "Sportstech Profi Laufband F10",
+                                                  "total":  6,
+                                                  "platforms":  {
+                                                                    "Trustpilot":  3,
+                                                                    "Amazon":  3
                                                                 }
                                               },
                                               {
@@ -168,18 +168,18 @@
                                                                 }
                                               },
                                               {
-                                                  "product":  "Sportstech sPulse",
-                                                  "total":  4,
-                                                  "platforms":  {
-                                                                    "Trustpilot":  4
-                                                                }
-                                              },
-                                              {
                                                   "product":  "Sportstech sWalk Grey Wood",
                                                   "total":  4,
                                                   "platforms":  {
                                                                     "Amazon":  3,
                                                                     "Trustpilot":  1
+                                                                }
+                                              },
+                                              {
+                                                  "product":  "Sportstech sPulse",
+                                                  "total":  4,
+                                                  "platforms":  {
+                                                                    "Trustpilot":  4
                                                                 }
                                               },
                                               {
@@ -191,7 +191,7 @@
                                                                 }
                                               },
                                               {
-                                                  "product":  "Bluewheel HX510 Smart Elektroroller in Blau V2",
+                                                  "product":  "Sportstech Kraftstation HGX50",
                                                   "total":  3,
                                                   "platforms":  {
                                                                     "Amazon":  2,
@@ -199,7 +199,7 @@
                                                                 }
                                               },
                                               {
-                                                  "product":  "Sportstech Kraftstation HGX50",
+                                                  "product":  "Bluewheel HX510 Smart Elektroroller in Blau V2",
                                                   "total":  3,
                                                   "platforms":  {
                                                                     "Amazon":  2,
@@ -238,23 +238,7 @@
                                                                 }
                                               },
                                               {
-                                                  "product":  "Sportstech sTread Fold Pro Laufband",
-                                                  "total":  3,
-                                                  "platforms":  {
-                                                                    "Trustpilot":  1,
-                                                                    "Amazon":  1,
-                                                                    "Galaxus.ch":  1
-                                                                }
-                                              },
-                                              {
                                                   "product":  "Sportstech CX700 V2 Crosstrainer",
-                                                  "total":  3,
-                                                  "platforms":  {
-                                                                    "Trustpilot":  3
-                                                                }
-                                              },
-                                              {
-                                                  "product":  "[Bundle] Sportstech sGymPro 21 inch + BRT400 + 12M STL Abo",
                                                   "total":  3,
                                                   "platforms":  {
                                                                     "Trustpilot":  3
@@ -269,10 +253,26 @@
                                                                 }
                                               },
                                               {
-                                                  "product":  "[Bundle] Sportstech sRow V2 + sTread Pro 21.5 inch",
-                                                  "total":  2,
+                                                  "product":  "Sportstech sTread Fold Pro Laufband",
+                                                  "total":  3,
                                                   "platforms":  {
-                                                                    "Trustpilot":  2
+                                                                    "Trustpilot":  1,
+                                                                    "Amazon":  1,
+                                                                    "Galaxus.ch":  1
+                                                                }
+                                              },
+                                              {
+                                                  "product":  "[Bundle] Sportstech sGymPro 21 inch + BRT400 + 12M STL Abo",
+                                                  "total":  3,
+                                                  "platforms":  {
+                                                                    "Trustpilot":  3
+                                                                }
+                                              },
+                                              {
+                                                  "product":  "Sportstech sPad500 Laufband",
+                                                  "total":  3,
+                                                  "platforms":  {
+                                                                    "Trustpilot":  3
                                                                 }
                                               },
                                               {
@@ -280,6 +280,21 @@
                                                   "total":  2,
                                                   "platforms":  {
                                                                     "Trustpilot":  2
+                                                                }
+                                              },
+                                              {
+                                                  "product":  "[Bundle] Sportstech sRow V2 + sTread Pro 21.5 inch",
+                                                  "total":  2,
+                                                  "platforms":  {
+                                                                    "Trustpilot":  2
+                                                                }
+                                              },
+                                              {
+                                                  "product":  "Sportstech Crosstrainer CX608 Version 2",
+                                                  "total":  2,
+                                                  "platforms":  {
+                                                                    "Amazon":  1,
+                                                                    "Trustpilot":  1
                                                                 }
                                               },
                                               {
@@ -297,25 +312,10 @@
                                                                 }
                                               },
                                               {
-                                                  "product":  "Sportstech Crosstrainer CX608 Version 2",
-                                                  "total":  2,
-                                                  "platforms":  {
-                                                                    "Amazon":  1,
-                                                                    "Trustpilot":  1
-                                                                }
-                                              },
-                                              {
                                                   "product":  "sWalk L Wood",
                                                   "total":  2,
                                                   "platforms":  {
                                                                     "Trustpilot":  2
-                                                                }
-                                              },
-                                              {
-                                                  "product":  "Sportstech Rückentrainer BRT150 in Schwarz",
-                                                  "total":  2,
-                                                  "platforms":  {
-                                                                    "Amazon":  2
                                                                 }
                                               },
                                               {
@@ -327,10 +327,10 @@
                                                                 }
                                               },
                                               {
-                                                  "product":  "Sportstech sPad500 Laufband",
+                                                  "product":  "Sportstech Rückentrainer BRT150 in Schwarz",
                                                   "total":  2,
                                                   "platforms":  {
-                                                                    "Trustpilot":  2
+                                                                    "Amazon":  2
                                                                 }
                                               },
                                               {
@@ -369,13 +369,6 @@
                                                                 }
                                               },
                                               {
-                                                  "product":  "Sportstech Laufband F37s 10inch",
-                                                  "total":  1,
-                                                  "platforms":  {
-                                                                    "Otto":  1
-                                                                }
-                                              },
-                                              {
                                                   "product":  "Sportstech Crosstrainer CX625 Version 2",
                                                   "total":  1,
                                                   "platforms":  {
@@ -383,7 +376,21 @@
                                                                 }
                                               },
                                               {
+                                                  "product":  "Sportstech Laufband F37s 10inch",
+                                                  "total":  1,
+                                                  "platforms":  {
+                                                                    "Otto":  1
+                                                                }
+                                              },
+                                              {
                                                   "product":  "Sportstech Laufband WoodPad Pro LWD",
+                                                  "total":  1,
+                                                  "platforms":  {
+                                                                    "Trustpilot":  1
+                                                                }
+                                              },
+                                              {
+                                                  "product":  "Sportstech BM186 Bodenschutzmatte mittel",
                                                   "total":  1,
                                                   "platforms":  {
                                                                     "Trustpilot":  1
@@ -397,7 +404,7 @@
                                                                 }
                                               },
                                               {
-                                                  "product":  "Sportstech Laufband sTread Pro 10inch",
+                                                  "product":  "Sportstech sRow_Lite Rudergerät",
                                                   "total":  1,
                                                   "platforms":  {
                                                                     "Trustpilot":  1
@@ -411,7 +418,7 @@
                                                                 }
                                               },
                                               {
-                                                  "product":  "Sportstech sRow_Lite Rudergerät",
+                                                  "product":  "Sportstech Laufband sTread Pro 10inch",
                                                   "total":  1,
                                                   "platforms":  {
                                                                     "Trustpilot":  1
@@ -425,7 +432,7 @@
                                                                 }
                                               },
                                               {
-                                                  "product":  "Sportstech BM186 Bodenschutzmatte mittel",
+                                                  "product":  "Sportstech Rückentrainer BRT200",
                                                   "total":  1,
                                                   "platforms":  {
                                                                     "Trustpilot":  1
@@ -433,13 +440,6 @@
                                               },
                                               {
                                                   "product":  "Bluewheel HX310s Smart Elektroroller in Blue Sky",
-                                                  "total":  1,
-                                                  "platforms":  {
-                                                                    "Trustpilot":  1
-                                                                }
-                                              },
-                                              {
-                                                  "product":  "Sportstech Rückentrainer BRT200",
                                                   "total":  1,
                                                   "platforms":  {
                                                                     "Trustpilot":  1
@@ -467,7 +467,7 @@
                                                                 }
                                               },
                                               {
-                                                  "product":  "Sportstech Speedbike sBike 10inch schwarz",
+                                                  "product":  "Sportstech Live Abo 12 Monate",
                                                   "total":  1,
                                                   "platforms":  {
                                                                     "Trustpilot":  1
@@ -481,17 +481,17 @@
                                                                 }
                                               },
                                               {
-                                                  "product":  "Sportstech Laufband F75 21inch",
-                                                  "total":  1,
-                                                  "platforms":  {
-                                                                    "Trustpilot":  1
-                                                                }
-                                              },
-                                              {
                                                   "product":  "Bluewheel HX310s Smart Elektroroller in Carbon",
                                                   "total":  1,
                                                   "platforms":  {
                                                                     "Amazon":  1
+                                                                }
+                                              },
+                                              {
+                                                  "product":  "Sportstech Laufband F75 21inch",
+                                                  "total":  1,
+                                                  "platforms":  {
+                                                                    "Trustpilot":  1
                                                                 }
                                               },
                                               {
@@ -502,7 +502,7 @@
                                                                 }
                                               },
                                               {
-                                                  "product":  "Sportstech Live Abo 12 Monate",
+                                                  "product":  "Sportstech Speedbike sBike 10inch schwarz",
                                                   "total":  1,
                                                   "platforms":  {
                                                                     "Trustpilot":  1
@@ -537,13 +537,6 @@
                                                                 }
                                               },
                                               {
-                                                  "product":  "[Bundle] Sportstech sCross + sRow V2 21.5 inch",
-                                                  "total":  1,
-                                                  "platforms":  {
-                                                                    "Trustpilot":  1
-                                                                }
-                                              },
-                                              {
                                                   "product":  "Bluewheel HX510 Smart Elektroroller in Rot V2",
                                                   "total":  1,
                                                   "platforms":  {
@@ -552,6 +545,13 @@
                                               },
                                               {
                                                   "product":  "[Bundle] Sportstech sGymPro 21 inch + 12M STL Abo",
+                                                  "total":  1,
+                                                  "platforms":  {
+                                                                    "Trustpilot":  1
+                                                                }
+                                              },
+                                              {
+                                                  "product":  "[Bundle] Sportstech sCross + sRow V2 21.5 inch",
                                                   "total":  1,
                                                   "platforms":  {
                                                                     "Trustpilot":  1
@@ -1218,28 +1218,29 @@
                                                          ]
                                 },
                     "2026-06":  {
-                                    "teilnehmer":  319,
+                                    "teilnehmer":  324,
                                     "sterne":  {
-                                                   "5":  190,
-                                                   "4":  89,
-                                                   "3":  19,
+                                                   "5":  192,
+                                                   "4":  91,
+                                                   "3":  20,
                                                    "2":  1,
                                                    "1":  1
                                                },
                                     "land":  {
-                                                 "Deutschland":  262,
+                                                 "Deutschland":  265,
                                                  "Frankreich":  24,
-                                                 "Österreich":  13,
+                                                 "Österreich":  14,
                                                  "Schweiz":  12,
                                                  "Italien":  3,
                                                  "Rumänien":  1,
                                                  "Spanien":  1,
-                                                 "Bulgarien":  1,
+                                                 "USA":  1,
                                                  "Republik Österreich":  1,
-                                                 "Niederlande":  1
+                                                 "Niederlande":  1,
+                                                 "Bulgarien":  1
                                              },
                                     "gewinn":  {
-                                                   "25€ sportstech gutschein":  39,
+                                                   "25€ sportstech gutschein":  42,
                                                    "ah300_hantelset":  19,
                                                    "hantelbank":  13,
                                                    "spulse":  9,
@@ -1247,8 +1248,8 @@
                                                    "sportstech_subscription":  3
                                                },
                                     "plattform":  {
-                                                      "Trustpilot":  161,
-                                                      "Amazon":  107,
+                                                      "Trustpilot":  164,
+                                                      "Amazon":  109,
                                                       "Otto":  22,
                                                       "Mediamarkt":  4,
                                                       "Decathlon.de":  3,
@@ -1256,19 +1257,19 @@
                                                   },
                                     "reviewedProducts":  [
                                                              {
+                                                                 "product":  "Sportstech sWalk Lite Plus",
+                                                                 "total":  11,
+                                                                 "platforms":  {
+                                                                                   "Trustpilot":  9,
+                                                                                   "Otto":  2
+                                                                               }
+                                                             },
+                                                             {
                                                                  "product":  "Sportstech sProRun Laufband",
                                                                  "total":  10,
                                                                  "platforms":  {
                                                                                    "Trustpilot":  4,
                                                                                    "Amazon":  4,
-                                                                                   "Otto":  2
-                                                                               }
-                                                             },
-                                                             {
-                                                                 "product":  "Sportstech sWalk Lite Plus",
-                                                                 "total":  10,
-                                                                 "platforms":  {
-                                                                                   "Trustpilot":  8,
                                                                                    "Otto":  2
                                                                                }
                                                              },
@@ -1356,14 +1357,6 @@
                                                                                }
                                                              },
                                                              {
-                                                                 "product":  "Sportstech Hantelbank BRT250",
-                                                                 "total":  2,
-                                                                 "platforms":  {
-                                                                                   "Trustpilot":  1,
-                                                                                   "Amazon":  1
-                                                                               }
-                                                             },
-                                                             {
                                                                  "product":  "Sportstech WRX1000 OAK V3",
                                                                  "total":  2,
                                                                  "platforms":  {
@@ -1371,31 +1364,11 @@
                                                                                }
                                                              },
                                                              {
-                                                                 "product":  "Bluewheel HX310s Smart Elektroroller in Blue Sky",
-                                                                 "total":  1,
+                                                                 "product":  "Sportstech Hantelbank BRT250",
+                                                                 "total":  2,
                                                                  "platforms":  {
-                                                                                   "Trustpilot":  1
-                                                                               }
-                                                             },
-                                                             {
-                                                                 "product":  "Sportstech VP400 Vibrationsplatte Schwarz V2",
-                                                                 "total":  1,
-                                                                 "platforms":  {
+                                                                                   "Trustpilot":  1,
                                                                                    "Amazon":  1
-                                                                               }
-                                                             },
-                                                             {
-                                                                 "product":  "Sportstech sRow_Lite Rudergerät",
-                                                                 "total":  1,
-                                                                 "platforms":  {
-                                                                                   "Trustpilot":  1
-                                                                               }
-                                                             },
-                                                             {
-                                                                 "product":  "Sportstech Rückentrainer BRT200",
-                                                                 "total":  1,
-                                                                 "platforms":  {
-                                                                                   "Trustpilot":  1
                                                                                }
                                                              },
                                                              {
@@ -1413,14 +1386,14 @@
                                                                                }
                                                              },
                                                              {
-                                                                 "product":  "Sportstech sTread Fold Pro Laufband",
+                                                                 "product":  "Sportstech Rückentrainer BRT200",
                                                                  "total":  1,
                                                                  "platforms":  {
-                                                                                   "Galaxus.ch":  1
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              },
                                                              {
-                                                                 "product":  "[Bundle] Sportstech sRow V2 + sTread Pro 21.5 inch",
+                                                                 "product":  "Bluewheel HX310s Smart Elektroroller in Blue Sky",
                                                                  "total":  1,
                                                                  "platforms":  {
                                                                                    "Trustpilot":  1
@@ -1434,10 +1407,45 @@
                                                                                }
                                                              },
                                                              {
+                                                                 "product":  "Sportstech sPad500 Laufband",
+                                                                 "total":  1,
+                                                                 "platforms":  {
+                                                                                   "Trustpilot":  1
+                                                                               }
+                                                             },
+                                                             {
+                                                                 "product":  "Sportstech sRow_Lite Rudergerät",
+                                                                 "total":  1,
+                                                                 "platforms":  {
+                                                                                   "Trustpilot":  1
+                                                                               }
+                                                             },
+                                                             {
+                                                                 "product":  "Sportstech VP400 Vibrationsplatte Schwarz V2",
+                                                                 "total":  1,
+                                                                 "platforms":  {
+                                                                                   "Amazon":  1
+                                                                               }
+                                                             },
+                                                             {
                                                                  "product":  "[Bundle] Sportstech Prower OAK + sProRun",
                                                                  "total":  1,
                                                                  "platforms":  {
                                                                                    "Trustpilot":  1
+                                                                               }
+                                                             },
+                                                             {
+                                                                 "product":  "[Bundle] Sportstech sRow V2 + sTread Pro 21.5 inch",
+                                                                 "total":  1,
+                                                                 "platforms":  {
+                                                                                   "Trustpilot":  1
+                                                                               }
+                                                             },
+                                                             {
+                                                                 "product":  "Sportstech sTread Fold Pro Laufband",
+                                                                 "total":  1,
+                                                                 "platforms":  {
+                                                                                   "Galaxus.ch":  1
                                                                                }
                                                              },
                                                              {
@@ -1536,6 +1544,36 @@
                                                                  "total":  1,
                                                                  "platforms":  {
                                                                                    "Amazon":  1
+                                                                               }
+                                                             }
+                                                         ]
+                                },
+                    "2026-07":  {
+                                    "teilnehmer":  9,
+                                    "sterne":  {
+                                                   "5":  5,
+                                                   "4":  3,
+                                                   "3":  0,
+                                                   "2":  0,
+                                                   "1":  1
+                                               },
+                                    "land":  {
+                                                 "Deutschland":  8,
+                                                 "Österreich":  1
+                                             },
+                                    "gewinn":  {
+                                                   "ah300_hantelset":  1
+                                               },
+                                    "plattform":  {
+                                                      "Trustpilot":  4,
+                                                      "Amazon":  4
+                                                  },
+                                    "reviewedProducts":  [
+                                                             {
+                                                                 "product":  "Sportstech sProRun Laufband",
+                                                                 "total":  1,
+                                                                 "platforms":  {
+                                                                                   "Trustpilot":  1
                                                                                }
                                                              }
                                                          ]
@@ -2291,6 +2329,36 @@
                      "fotoHochgeladen":  4,
                      "conversion":  66.7,
                      "rezisBild":  4
+                 },
+                 {
+                     "date":  "2026-06-29",
+                     "gesamtNutzer":  1,
+                     "reziProdukte":  1,
+                     "ohneRezi":  0,
+                     "abgeschlossen":  1,
+                     "fotoHochgeladen":  0,
+                     "conversion":  0,
+                     "rezisBild":  0
+                 },
+                 {
+                     "date":  "2026-06-30",
+                     "gesamtNutzer":  5,
+                     "reziProdukte":  5,
+                     "ohneRezi":  0,
+                     "abgeschlossen":  3,
+                     "fotoHochgeladen":  2,
+                     "conversion":  40,
+                     "rezisBild":  2
+                 },
+                 {
+                     "date":  "2026-07-01",
+                     "gesamtNutzer":  11,
+                     "reziProdukte":  11,
+                     "ohneRezi":  0,
+                     "abgeschlossen":  2,
+                     "fotoHochgeladen":  1,
+                     "conversion":  9.1,
+                     "rezisBild":  1
                  }
              ]
 }
