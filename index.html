@@ -136,8 +136,10 @@ function buildTabs(){
   });
   const lastDay = (DATA.days && DATA.days.length) ? DATA.days.map(d=>d.date).sort().slice(-1)[0] : null;
   const ld = lastDay ? new Date(lastDay).toLocaleDateString('de-DE') : '—';
-  const up = (DATA.meta&&DATA.meta.updated)? new Date(DATA.meta.updated).toLocaleDateString('de-DE') : '—';
-  document.getElementById('stand').textContent='Tageswerte bis '+ld+' · Kampagne '+up;
+  // Kampagne-Stand kommt aus campaign.stand (setzt NUR update-data.ps1). Fallback: meta.updated.
+  const csRaw = (DATA.campaign&&DATA.campaign.stand)? DATA.campaign.stand : (DATA.meta&&DATA.meta.updated? DATA.meta.updated : null);
+  const cs = csRaw ? new Date(csRaw).toLocaleDateString('de-DE') : '—';
+  document.getElementById('stand').textContent='Tageswerte bis '+ld+' · Kampagne gesamt: Stand '+cs;
   show('__overview__');
 }
 

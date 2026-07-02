@@ -101,6 +101,7 @@ foreach($g in ($rezi | Where-Object { $_.Zeit_des_Spiels -and $_.Zeit_des_Spiels
 $djsRaw = Get-Content (Join-Path $ProjectDir 'data.js') -Raw -Encoding UTF8
 $existing = ($djsRaw -replace '^\s*window\.DASHBOARD_DATA\s*=\s*','' -replace ';\s*$','') | ConvertFrom-Json
 $today = (Get-Date).ToString('yyyy-MM-dd')
+$campaign['stand'] = $today   # echtes Sheet-Refresh-Datum; steht im campaign-Block, den der Tagesbot nie anfasst
 
 $out=[ordered]@{
   meta=[ordered]@{ source='live'; updated=$today; hinweis=$existing.meta.hinweis }

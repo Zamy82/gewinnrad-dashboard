@@ -557,7 +557,8 @@ window.DASHBOARD_DATA = {
                                                                     "Trustpilot":  1
                                                                 }
                                               }
-                                          ]
+                                          ],
+                     "stand":  "2026-07-02"
                  },
     "monthly":  {
                     "2026-03":  {
