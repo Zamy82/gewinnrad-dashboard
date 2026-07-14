@@ -195,7 +195,7 @@ function renderOverview(){
   const convPct = C.teilnehmer ? (C.fotosHochgeladen/C.teilnehmer*100) : 0;
   const cards=[
     kc('Teilnehmer', fmt(C.teilnehmer), WHITE, GREEN, 'haben gespielt (seit 12.03.2026)'),
-    kc('Rezis erzeugt', fmt(C.fotosHochgeladen), GREEN, GREEN, 'mit Bild · '+fmt(C.fotosValidiert)+' validiert'),
+    kc('Rezis erzeugt', fmt(C.fotosHochgeladen), GREEN, GREEN, 'mit Bild · '+fmt(C.fotosValidiert)+' validiert · aus Flyer-Sheet'),
     kc('Conversion', de(convPct.toFixed(1))+' %', ORANGE, RED, fmt(C.fotosHochgeladen)+' / '+fmt(C.teilnehmer)+' Teilnehmer'),
     kc('Zu Ende gespielt', fmt(C.zuEnde), GREEN, GREEN, de(C.conversionPct)+' % der Teilnehmer'),
     kc('Ø Produktbewertung', de(C.avgSterne), AMBER, AMBER, 'von 5 · '+fmt(C.bewertungen)+' Bewertungen'),
@@ -261,7 +261,7 @@ function renderMonth(ym){
     <div class="sec"><span class="no">01</span>Monatsüberblick · ${monthName(ym)}</div>
     <div class="grid cards">
       ${kc('Gesamt Nutzer', fmt(totN), WHITE, GREEN, 'Ø '+de((totN/nDays).toFixed(1))+' / Tag')}
-      ${kc('Rezis erzeugt', fmt(totB), GREEN, GREEN, 'Ø '+de((totB/nDays).toFixed(1))+' / Tag')}
+      ${kc('Rezis erzeugt', fmt(totB), GREEN, GREEN, 'Ø '+de((totB/nDays).toFixed(1))+' / Tag · aus 9-Uhr-Mail')}
       ${kc('Conversion', de(conv.toFixed(1))+' %', ORANGE, 'var(--red)', fmt(totB)+' / '+fmt(totN)+' Nutzer')}
       ${kc('Beste Conversion', de(best.c.toFixed(1))+' %', GREEN, GREEN, best.d?('am '+bestDM+' ('+best.d.rezisBild+' / '+best.d.gesamtNutzer+')'):'—')}
     </div>
