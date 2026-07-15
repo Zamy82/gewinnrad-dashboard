@@ -170,20 +170,47 @@ function barList(obj){
 }
 
 // Produkt × Plattform-Tabelle (rezensierte Produkte mit Bild)
-function reviewedProductsTable(list){
+let RPT_LIST=null;
+function rptApplyFilter(platform){
+  const el=document.getElementById('rptBox');
+  if(el && RPT_LIST) el.outerHTML = reviewedProductsTable(RPT_LIST, platform);
+}
+function reviewedProductsTable(list, platform){
   if(!list || !list.length) return '<div class="khint" style="padding:4px 2px">Keine Daten.</div>';
+  RPT_LIST=list;
   const platTotals={};
   list.forEach(p=>Object.entries(p.platforms||{}).forEach(([k,v])=>platTotals[k]=(platTotals[k]||0)+v));
-  let cols=Object.entries(platTotals).sort((a,b)=>b[1]-a[1]).map(e=>e[0]);
-  let andere=false; const MAX=5;
-  if(cols.length>MAX){ andere=true; cols=cols.slice(0,MAX); }
-  const head='<th>Produkt</th>'+cols.map(c=>`<th>${c}</th>`).join('')+(andere?'<th>Andere</th>':'')+'<th>Gesamt</th>';
-  const rows=[...list].sort((a,b)=>b.total-a.total).map(p=>{
-    const cells=cols.map(c=>`<td>${p.platforms[c]||'–'}</td>`).join('');
-    let rest=0; if(andere) Object.entries(p.platforms).forEach(([k,v])=>{ if(!cols.includes(k)) rest+=v; });
-    return `<tr><td title="${p.product}">${p.product}</td>${cells}${andere?`<td>${rest||'–'}</td>`:''}<td><strong>${p.total}</strong></td></tr>`;
-  }).join('');
-  return `<div style="overflow:auto;max-height:440px"><table><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table></div>`;
+  const allPlats=Object.entries(platTotals).sort((a,b)=>b[1]-a[1]).map(e=>e[0]);
+  platform = (platform && platTotals[platform]!==undefined) ? platform : 'ALL';
+  const opts=['<option value="ALL">Alle Plattformen</option>']
+    .concat(allPlats.map(p=>`<option value="${p}"${p===platform?' selected':''}>${p} (${platTotals[p]})</option>`)).join('');
+  const filterBar=`<div style="display:flex;align-items:center;gap:9px;flex-wrap:wrap;padding:2px 2px 14px">
+      <span class="khint" style="margin:0">Plattform:</span>
+      <select onchange="rptApplyFilter(this.value)" style="font:inherit;font-size:13px;font-weight:600;color:var(--ink);background:var(--card2);border:1px solid var(--line);border-radius:8px;padding:6px 10px;cursor:pointer">${opts}</select>
+      ${platform!=='ALL'?`<span class="khint" style="margin:0">· gefiltert nach ${platform}</span>`:''}
+    </div>`;
+  let inner;
+  if(platform==='ALL'){
+    let cols=allPlats.slice(); let andere=false; const MAX=5;
+    if(cols.length>MAX){ andere=true; cols=cols.slice(0,MAX); }
+    const head='<th>Produkt</th>'+cols.map(c=>`<th>${c}</th>`).join('')+(andere?'<th>Andere</th>':'')+'<th>Gesamt</th>';
+    const rows=[...list].sort((a,b)=>b.total-a.total).map(p=>{
+      const cells=cols.map(c=>`<td>${p.platforms[c]||'–'}</td>`).join('');
+      let rest=0; if(andere) Object.entries(p.platforms).forEach(([k,v])=>{ if(!cols.includes(k)) rest+=v; });
+      return `<tr><td title="${p.product}">${p.product}</td>${cells}${andere?`<td>${rest||'–'}</td>`:''}<td><strong>${p.total}</strong></td></tr>`;
+    }).join('');
+    inner=`<table><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table>`;
+  } else {
+    const filtered=list.filter(p=>(p.platforms||{})[platform]>0)
+      .map(p=>({product:p.product,count:p.platforms[platform]}))
+      .sort((a,b)=>b.count-a.count);
+    const sumP=filtered.reduce((s,r)=>s+r.count,0);
+    const rows=filtered.map(r=>`<tr><td title="${r.product}">${r.product}</td><td><strong>${r.count}</strong></td></tr>`).join('')
+      || `<tr><td colspan="2" class="khint" style="padding:8px 2px">Keine Produkte mit ${platform}-Rezensionen.</td></tr>`;
+    inner=`<table><thead><tr><th>Produkt</th><th>${platform}</th></tr></thead><tbody>${rows}</tbody>
+      <tfoot><tr><td>Gesamt (${filtered.length} Produkte)</td><td><strong>${sumP}</strong></td></tr></tfoot></table>`;
+  }
+  return `<div id="rptBox">${filterBar}<div style="overflow:auto;max-height:440px">${inner}</div></div>`;
 }
 
 /* ---------- Tab: Kampagne gesamt ---------- */
