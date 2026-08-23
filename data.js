@@ -1,7 +1,7 @@
 window.DASHBOARD_DATA = {
   "meta": {
     "source": "live",
-    "updated": "2026-08-21",
+    "updated": "2026-08-22",
     "hinweis": "Tageswerte: aus den 9-Uhr-Berichten des Gewinnspiel-Systems (zuverlaessig pro Tag). Kampagnen-Aggregate: eigenstaendig aus dem All-in-One-Flyer-Sheet berechnet. Nur Aggregate, kein PII. Unabhaengig vom PMO-Dashboard."
   },
   "campaign": {
@@ -3039,6 +3039,16 @@ window.DASHBOARD_DATA = {
       "fotoHochgeladen": 3,
       "conversion": 18.8,
       "rezisBild": 3
+    },
+    {
+      "date": "2026-08-22",
+      "gesamtNutzer": 8,
+      "reziProdukte": 8,
+      "ohneRezi": 0,
+      "abgeschlossen": 2,
+      "fotoHochgeladen": 1,
+      "conversion": 12.5,
+      "rezisBild": 1
     }
   ]
 };
